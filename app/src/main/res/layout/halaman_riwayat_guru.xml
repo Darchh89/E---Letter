@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    tools:context=".halaman_riwayat_guru">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logo_smk"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/logo_smk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_riwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:text="Riwayat Surat"
+                android:textColor="@android:color/black"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo_smk" />
+
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:text="Daftar riwayat pengajuan surat Anda"
+                android:textColor="#616161"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_riwayat" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subtitle">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/title_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#FFF59D" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_1" app:layout_constraintStart_toEndOf="@+id/title_1" app:layout_constraintTop_toTopOf="@+id/title_1">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="12dp" android:paddingVertical="4dp" android:text="Menunggu" android:textColor="#F57F17" android:textSize="10sp" android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView android:id="@+id/sender_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : PMR" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_1" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 22 Oktober 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_1" />
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/title_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#FFCDD2" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_2" app:layout_constraintStart_toEndOf="@+id/title_2" app:layout_constraintTop_toTopOf="@+id/title_2">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Ditolak" android:textColor="#C62828" android:textSize="10sp" android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView android:id="@+id/sender_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : OSIS" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_2" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 20 Juli 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_2" />
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/title_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_3" app:layout_constraintStart_toEndOf="@+id/title_3" app:layout_constraintTop_toTopOf="@+id/title_3">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView android:id="@+id/sender_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : Paskibra" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_3" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 13 Agustus 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_3" />
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                        <TextView android:id="@+id/title_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_4" app:layout_constraintStart_toEndOf="@+id/title_4" app:layout_constraintTop_toTopOf="@+id/title_4">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                        <TextView android:id="@+id/sender_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : Kapro" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_4" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 13 Agustus 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_4" />
+                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="-24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:layout_gravity="top" android:baselineAligned="false" android:orientation="horizontal" android:weightSum="4">
+
+            <LinearLayout android:id="@+id/nav_beranda" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_home_abu" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Beranda" android:textColor="#9E9E9E" android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/nav_panduan" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_panduan_abu" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Panduan" android:textColor="#9E9E9E" android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/nav_riwayat" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_riwayat_biru" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Riwayat" android:textColor="#4299E1" android:textSize="10sp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/nav_profil" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_profil_abu" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Profil" android:textColor="#9E9E9E" android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

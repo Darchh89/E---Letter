@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidELetter"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".halaman_tanda_tangan_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_kelola_pengguna"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_unduh_surat"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_kelola_surat"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_beranda_admin"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_ubah_kata_sandi"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_verifikasi_otp"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lupa_kata_sandi"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_buat_surat_izin_masuk_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_buat_surat_izin_keluar_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_buat_surat_dispensasi_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_izin_keluar_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_izin_masuk_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_dispensasi_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_beranda_kepsek"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_edit_profil_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_edit_profil_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_profil_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_riwayat_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_panduan_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_beranda_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_daftar_guru"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_buat_surat_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_profil_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_riwayat_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_panduan_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_beranda_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_masuk_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_daftar_siswa"
+            android:exported="false" />
+        <activity
+            android:name=".LanjutkanSebagai"
+            android:exported="false" />
+        <activity
+            android:name=".LoadingScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

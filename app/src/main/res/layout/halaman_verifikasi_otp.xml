@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".halaman_verifikasi_otp">
+
+    <LinearLayout
+        android:id="@+id/btn_back_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/tombol_back"
+            app:tint="#9E9E9E" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Kembali ke Halaman Utama"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back_layout"
+        app:layout_constraintVertical_bias="0.2"> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verifikasi OTP"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:text="Ketik kode verifikasi yang telah dikirim ke\nalamat email Anda: tambang@gmail.com"
+            android:textColor="#424242"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_1" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_2" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_3" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_4" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_5" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView android:layout_width="48dp" android:layout_height="56dp" android:layout_marginHorizontal="4dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#CFD8DC" app:strokeWidth="1dp">
+                <EditText android:id="@+id/otp_6" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:inputType="number" android:maxLength="1" android:textColor="@android:color/black" android:textSize="24sp" android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_konfirmasi"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Konfirmasi"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FF9F43"
+            app:cornerRadius="28dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidak menerima kode? "
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_kirim_ulang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kirim ulang"
+                android:textColor="#FF9F43"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

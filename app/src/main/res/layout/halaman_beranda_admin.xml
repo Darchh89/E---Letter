@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".halaman_beranda_admin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="40dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="32dp">
+
+            <LinearLayout
+                android:id="@+id/btn_keluar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_keluar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Keluar"
+                    android:textColor="#C62828"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="4dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardBackgroundColor="#7FA5FF"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Dasbor" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tab_kelola"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#9E9E9E"
+                        app:strokeWidth="1dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Kelola Surat" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tab_unduh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#9E9E9E"
+                        app:strokeWidth="1dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Unduh Surat" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tab_pengguna"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#9E9E9E"
+                        app:strokeWidth="1dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Pengguna" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="4dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradien_biru"
+                            android:padding="12dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Surat" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="3" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />
+                            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/icon_total_surat" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="4dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradien_hijau"
+                            android:padding="12dp">
+                            <TextView android:id="@+id/title_setuju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Disetujui" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/angka_setuju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/title_setuju" android:text="3" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="📈 Aktif dikelola" android:textColor="@color/white" android:textSize="10sp" />
+                            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/icon_disetujui" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="4dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradien_oren"
+                            android:padding="12dp">
+                            <TextView android:id="@+id/title_tunggu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Menunggu" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/angka_tunggu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/title_tunggu" android:text="8" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="📈 Aktif dikelola" android:textColor="@color/white" android:textSize="10sp" />
+                            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/icon_menunggu" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="4dp"
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradien_merah"
+                            android:padding="12dp">
+                            <TextView android:id="@+id/title_tolak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ditolak" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                            <TextView android:id="@+id/angka_tolak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/title_tolak" android:text="3" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="📈 Aktif dikelola" android:textColor="@color/white" android:textSize="10sp" />
+                            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/icon_ditolak" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/icon_aktivitas" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Aktivitas Terbaru"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                    <TextView android:id="@+id/title_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#FFF59D" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_1" app:layout_constraintStart_toEndOf="@+id/title_1" app:layout_constraintTop_toTopOf="@+id/title_1">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Menunggu" android:textColor="#F57F17" android:textSize="10sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:id="@+id/pengirim_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="Paskibra" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_1" />
+                    <TextView android:id="@+id/tgl_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.31" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_1" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                    <TextView android:id="@+id/title_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Masuk" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_2" app:layout_constraintStart_toEndOf="@+id/title_2" app:layout_constraintTop_toTopOf="@+id/title_2">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:id="@+id/pengirim_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="Rizky" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_2" />
+                    <TextView android:id="@+id/tgl_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_2" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
+                    <TextView android:id="@+id/title_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#FFCDD2" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_3" app:layout_constraintStart_toEndOf="@+id/title_3" app:layout_constraintTop_toTopOf="@+id/title_3">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Ditolak" android:textColor="#C62828" android:textSize="10sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:id="@+id/pengirim_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="LKS" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_3" />
+                    <TextView android:id="@+id/tgl_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_3" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_3" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
