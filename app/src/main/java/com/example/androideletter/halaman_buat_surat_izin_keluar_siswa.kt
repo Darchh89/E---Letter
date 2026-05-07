@@ -1,23 +1,21 @@
 package com.example.androideletter
 
+import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
-import android.widget.CalendarView
+import android.view.Window
+import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
-import java.util.Calendar
 
 class halaman_buat_surat_izin_keluar_siswa : AppCompatActivity() {
-
-    private var tanggalTerpilihRaw = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,120 +26,64 @@ class halaman_buat_surat_izin_keluar_siswa : AppCompatActivity() {
         windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
         windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
-        // DEKLARASI ELEMEN UMUM
-        val btnBack = findViewById<ImageView>(R.id.btn_back)
-        val btnBuatSurat = findViewById<MaterialCardView>(R.id.btn_buat_surat)
+        // Tombol Back Header
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener { finish() }
 
-        // DEKLARASI ELEMEN KALENDER
-        val btnPilihTanggal = findViewById<MaterialCardView>(R.id.btn_pilih_tanggal)
-        val tvTanggalTerpilih = findViewById<TextView>(R.id.tv_tanggal_terpilih)
-        val layoutKalender = findViewById<MaterialCardView>(R.id.layout_kalender)
-        val calendarView = findViewById<CalendarView>(R.id.calendar_view)
-        val btnSimpanTanggal = findViewById<MaterialButton>(R.id.btn_simpan_tanggal)
+        val btnAjukan = findViewById<MaterialButton>(R.id.btn_ajukan)
 
-        // DEKLARASI ELEMEN DROPDOWN KONSENTRASI
-        val btnKonsentrasi = findViewById<MaterialCardView>(R.id.btn_konsentrasi)
-        val tvKonsentrasiTerpilih = findViewById<TextView>(R.id.tv_konsentrasi_terpilih)
-        val layoutDropdownKonsentrasi = findViewById<MaterialCardView>(R.id.layout_dropdown_konsentrasi)
+        // Memunculkan Pop Up Konfirmasi Pertama saat ditekan
+        btnAjukan.setOnClickListener {
+            tampilkanDialogKonfirmasi()
+        }
+    }
 
-        // Item dalam dropdown konsentrasi
-        val opt1 = findViewById<TextView>(R.id.opt_1)
-        val opt2 = findViewById<TextView>(R.id.opt_2)
-        val opt3 = findViewById<TextView>(R.id.opt_3)
-        val opt4 = findViewById<TextView>(R.id.opt_4)
-        val opt5 = findViewById<TextView>(R.id.opt_5)
-        val opt6 = findViewById<TextView>(R.id.opt_6)
-        val opt7 = findViewById<TextView>(R.id.opt_7)
-        val opt8 = findViewById<TextView>(R.id.opt_8)
+    private fun tampilkanDialogKonfirmasi() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // Memanggil file XML pop up konfirmasi
+        dialog.setContentView(R.layout.dialog_konfirmasi_pengajuan)
+        // Membuat latar belakang pop up transparan agar sudut melengkungnya (radius) terlihat
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
-        val opsiKonsentrasi = listOf(opt1, opt2, opt3, opt4, opt5, opt6, opt7, opt8)
+        val btnPeriksaLagi = dialog.findViewById<MaterialButton>(R.id.btn_periksa_lagi)
+        val btnYaBuat = dialog.findViewById<MaterialButton>(R.id.btn_ya_buat)
 
-        // ----------------------------------------------------
-        // LOGIKA KEMBALI & BUAT SURAT
-        // ----------------------------------------------------
-        btnBack.setOnClickListener { finish() }
-
-        btnBuatSurat.setOnClickListener {
-            Toast.makeText(this, "Surat Izin Keluar Berhasil Dibuat!", Toast.LENGTH_SHORT).show()
-            finish()
+        btnPeriksaLagi.setOnClickListener {
+            dialog.dismiss() // Tutup pop up
         }
 
-        // ----------------------------------------------------
-        // LOGIKA DROPDOWN KONSENTRASI KEAHLIAN
-        // ----------------------------------------------------
-        btnKonsentrasi.setOnClickListener {
-            // Tutup kalender jika sedang terbuka
-            layoutKalender.visibility = View.GONE
-
-            // Toggle menu dropdown
-            if (layoutDropdownKonsentrasi.visibility == View.GONE) {
-                layoutDropdownKonsentrasi.visibility = View.VISIBLE
-            } else {
-                layoutDropdownKonsentrasi.visibility = View.GONE
-            }
+        btnYaBuat.setOnClickListener {
+            dialog.dismiss() // Tutup pop up pertama
+            tampilkanDialogBerhasil() // Munculkan pop up kedua
         }
 
-        // Jika salah satu item dropdown diklik
-        opsiKonsentrasi.forEach { textView ->
-            textView.setOnClickListener {
-                // Ambil teks dari item yang diklik
-                val textPilihan = textView.text.toString()
+        dialog.show()
+    }
 
-                // Ubah tulisan di kotak utama & ganti warnanya jadi hitam
-                tvKonsentrasiTerpilih.text = textPilihan
-                tvKonsentrasiTerpilih.setTextColor(Color.BLACK)
+    private fun tampilkanDialogBerhasil() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // Memanggil file XML pop up berhasil
+        dialog.setContentView(R.layout.dialog_surat_berhasil)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
-                // Tutup kembali menu dropdown
-                layoutDropdownKonsentrasi.visibility = View.GONE
-            }
+        val btnKembaliDialog = dialog.findViewById<MaterialButton>(R.id.btn_kembali_dialog)
+        val btnLihatSurat = dialog.findViewById<MaterialButton>(R.id.btn_lihat_surat)
+
+        btnKembaliDialog.setOnClickListener {
+            dialog.dismiss()
+            finish() // Kembali ke halaman sebelumnya
         }
 
-        // ----------------------------------------------------
-        // LOGIKA KALENDER
-        // ----------------------------------------------------
-        btnPilihTanggal.setOnClickListener {
-            // Tutup dropdown konsentrasi jika sedang terbuka
-            layoutDropdownKonsentrasi.visibility = View.GONE
-
-            // Toggle kalender
-            if (layoutKalender.visibility == View.GONE) {
-                layoutKalender.visibility = View.VISIBLE
-            } else {
-                layoutKalender.visibility = View.GONE
-            }
+        btnLihatSurat.setOnClickListener {
+            dialog.dismiss()
+            // Mengarahkan ke halaman Lihat Surat (Sesuaikan nama class-nya)
+            // startActivity(Intent(this, halaman_lihat_surat_siswa::class.java))
+            // finish()
         }
 
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-            val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-
-            val namaHari = arrayOf("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")
-            val namaBulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
-
-            val hariFix = namaHari[dayOfWeek - 1]
-            val bulanFix = namaBulan[month]
-
-            tanggalTerpilihRaw = "$hariFix, $dayOfMonth $bulanFix $year"
-        }
-
-        btnSimpanTanggal.setOnClickListener {
-            if (tanggalTerpilihRaw.isEmpty()) {
-                val calendar = Calendar.getInstance()
-                val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-                val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
-                val month = calendar.get(Calendar.MONTH)
-                val year = calendar.get(Calendar.YEAR)
-
-                val namaHari = arrayOf("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")
-                val namaBulan = arrayOf("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
-
-                tanggalTerpilihRaw = "${namaHari[dayOfWeek - 1]}, $dayOfMonth ${namaBulan[month]} $year"
-            }
-
-            tvTanggalTerpilih.text = tanggalTerpilihRaw
-            tvTanggalTerpilih.setTextColor(Color.BLACK)
-            layoutKalender.visibility = View.GONE
-        }
+        dialog.show()
     }
 }

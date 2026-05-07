@@ -7,7 +7,7 @@
     android:background="#FAFAFA"
     tools:context=".halaman_tanda_tangan_siswa">
 
-    <!-- HEADER SAMA SEPERTI HALAMAN 1 -->
+    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -18,90 +18,155 @@
         android:paddingVertical="20dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView android:id="@+id/btn_back" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/tombol_back" app:tint="#3FA2F6" />
+        <ImageView android:id="@+id/btn_back_header" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/tombol_back" app:tint="#3FA2F6" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="Edit Profil" android:textColor="#3FA2F6" android:textSize="18sp" android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+    <!-- KONTEN BISA DI-SCROLL -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_action_buttons"
         app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
-        <!-- STEPPER PROGRESS (Step 2 Aktif) -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_marginBottom="32dp" android:gravity="center" android:orientation="horizontal">
-            <!-- Step 1 (Selesai) -->
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
-                <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#3FA2F6" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                </com.google.android.material.card.MaterialCardView>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Profil" android:textColor="#3FA2F6" android:textSize="10sp" />
-            </LinearLayout>
-            <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#3FA2F6" />
-            <!-- Step 2 (Aktif) -->
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
-                <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#3FA2F6" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                </com.google.android.material.card.MaterialCardView>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Tanda Tangan" android:textColor="#3FA2F6" android:textSize="10sp" />
-            </LinearLayout>
-            <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#CFD8DC" />
-            <!-- Step 3 (Pasif) -->
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
-                <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#E0E0E0" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="#9E9E9E" android:textSize="12sp" android:textStyle="bold" />
-                </com.google.android.material.card.MaterialCardView>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Selesai" android:textColor="#9E9E9E" android:textSize="10sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gambar Tanda Tangan" android:textColor="@android:color/black" android:textSize="18sp" android:textStyle="bold" />
-
-        <!-- KOTAK TANDA TANGAN (Memanggil Custom View SignatureView.kt) -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_dashed_border"> <!-- Ingat gunakan bg_dashed_border.xml dari response saya sebelumnya -->
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
 
-            <com.example.androideletter.SignatureView
-                android:id="@+id/signature_pad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/placeholder_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Gambar tanda tangan Anda di sini"
-                android:textColor="#B0BEC5"
-                android:textSize="12sp"/>
-
-            <!-- Tombol Aksi di dalam Kotak -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <!-- TOMBOL HAPUS MENGGUNAKAN IKON TEMPAT SAMPAH -->
-                <LinearLayout android:id="@+id/btn_hapus_ttd" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="horizontal">
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/tempat_sampah" app:tint="#E53935" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Hapus" android:textColor="#E53935" android:textStyle="bold" />
+            <!-- STEPPER PROGRESS -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_marginBottom="32dp" android:gravity="center" android:orientation="horizontal">
+                <!-- Step 1 (Selesai) -->
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#3FA2F6" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Profil" android:textColor="#3FA2F6" android:textSize="10sp" />
                 </LinearLayout>
-
-                <!-- TOMBOL SIMPAN MENGGUNAKAN IKON SAVE -->
-                <LinearLayout android:id="@+id/btn_simpan_ttd" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="horizontal">
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/icon_save" app:tint="#3FA2F6" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Simpan" android:textColor="#3FA2F6" android:textStyle="bold" />
+                <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#3FA2F6" />
+                <!-- Step 2 (Aktif) -->
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#3FA2F6" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Tanda Tangan" android:textColor="#3FA2F6" android:textSize="10sp" />
                 </LinearLayout>
-
+                <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#CFD8DC" />
+                <!-- Step 3 (Pasif) -->
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#E0E0E0" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="#9E9E9E" android:textSize="12sp" android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Selesai" android:textColor="#9E9E9E" android:textSize="10sp" />
+                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
 
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gambar Tanda Tangan" android:textColor="@android:color/black" android:textSize="18sp" android:textStyle="bold" />
+
+            <!-- PEMBERITAHUAN INFO BIRU -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#64B5F6"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                    <!-- Gunakan icon tanda seru atau panduan -->
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/icon_panduan_new" app:tint="#1E88E5" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:text="Tanda tangan akan digunakan secara\notomatis pada setiap surat yang Anda setujui.\nPastikan hasilnya jelas dan sesuai." android:textColor="#1E88E5" android:textSize="10sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- KOTAK TANDA TANGAN (Memanggil Custom View SignatureView.kt) -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_dashed_border">
+
+                <com.example.androideletter.SignatureView
+                    android:id="@+id/signature_pad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/placeholder_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Gambar tanda tangan Anda di sini"
+                    android:textColor="#B0BEC5"
+                    android:textSize="12sp"/>
+
+                <!-- Tombol Aksi di dalam Kotak -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <LinearLayout android:id="@+id/btn_hapus_ttd" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="horizontal">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/tempat_sampah" app:tint="#E53935" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Hapus" android:textColor="#E53935" android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/btn_simpan_ttd" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="horizontal">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/icon_save" app:tint="#3FA2F6" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="Simpan" android:textColor="#3FA2F6" android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 2 TOMBOL UTAMA DI BAWAH (STICKY BOTTOM) -->
+    <LinearLayout
+        android:id="@+id/bottom_action_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_kembali"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:text="Kembali"
+            android:textAllCaps="false"
+            android:textColor="#3FA2F6"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="12dp"
+            app:strokeColor="#3FA2F6"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_selesai"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:text="Selesai &amp; Masuk"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="#3FA2F6"
+            app:cornerRadius="12dp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
