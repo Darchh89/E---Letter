@@ -1,5 +1,6 @@
 package com.example.androideletter
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -28,11 +29,13 @@ class RiwayatAdapter(private val listRiwayat: List<RiwayatSuratResponse>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = listRiwayat[position]
 
-        holder.tvJenis.text = item.type_label
+        // Aman dari nilai kosong (null safety)
+        holder.tvJenis.text = item.type_label ?: "Surat Izin"
 
         // Memotong jam pada format date (misal 2026-04-30T00:00:00.000Z menjadi 2026-04-30)
-        val tanggalSingkat = item.request_date.split("T")[0]
-        holder.tvTanggalJudul.text = "$tanggalSingkat • ${item.title}"
+        val tanggalSingkat = item.request_date?.split("T")?.get(0) ?: "Tanggal Tidak Diketahui"
+        val judulAman = item.title ?: "Tanpa Judul"
+        holder.tvTanggalJudul.text = "$tanggalSingkat • $judulAman"
 
         // Mengatur Warna dan Ikon berdasarkan tipe surat
         when (item.type_code) {
@@ -50,6 +53,26 @@ class RiwayatAdapter(private val listRiwayat: List<RiwayatSuratResponse>) :
                 holder.cvBg.setCardBackgroundColor(Color.parseColor("#E3F2FD"))
                 holder.ivIcon.setColorFilter(Color.parseColor("#2196F3"))
                 holder.ivIcon.setImageResource(R.drawable.icon_surat_dispensasi)
+            }
+        }
+
+        // ==========================================================
+        // TAMBAHAN: LOGIKA KLIK UNTUK MENUJU HALAMAN DETAIL
+        // ==========================================================
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+
+            // Tentukan intent (halaman tujuan) berdasarkan tipe surat
+            val intent = when (item.type_code) {
+                "izin_masuk" -> Intent(context, halaman_detail_surat_izin_masuk::class.java)
+                "izin_keluar" -> Intent(context, halaman_detail_surat_izin_keluar::class.java)
+                else -> null // Jika ada surat jenis dispensasi, Anda bisa arahkan ke halaman lain nanti
+            }
+
+            // Jika intent valid, kirim data Parcelize dan buka halamannya
+            intent?.let {
+                it.putExtra("DATA_SURAT", item)
+                context.startActivity(it)
             }
         }
     }

@@ -50,4 +50,11 @@ interface EletterApiService {
     fun getHistorySurat(
         @Header("Authorization") token: String
     ): Call<List<RiwayatSuratResponse>>
+
+    @POST("api/student/surat-izin-keluar")
+    fun buatSuratIzinKeluar(
+        @Header("Authorization") token: String,
+        @Body request: SuratIzinMasukRequest
+    ): Call<GeneralResponse>
+
 }

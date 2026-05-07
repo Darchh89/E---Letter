@@ -1,5 +1,8 @@
 package com.example.androideletter.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 // Data yang dikirim ke server
 data class RegisterRequest(
     val full_name: String,
@@ -13,8 +16,6 @@ data class AuthResponse(
     val message: String,
     val user_id: Int? = null
 )
-
-// ... (RegisterRequest & AuthResponse biarkan saja)
 
 // Model untuk mengirim data Login
 data class LoginRequest(
@@ -69,7 +70,6 @@ data class DepartmentResponse(
     val name: String
 )
 
-// Tambahkan di file model Anda
 data class SuratIzinMasukRequest(
     val title: String,
     val department_id: Int,
@@ -79,12 +79,20 @@ data class SuratIzinMasukRequest(
     val description: String
 )
 
+// === UPDATED: Ditambahkan @Parcelize dan kolom tambahan ===
+@Parcelize
 data class RiwayatSuratResponse(
     val id: Int,
-    val request_number: String,
-    val title: String,
-    val request_date: String,
-    val status: String,
-    val type_code: String, // contoh: 'izin_masuk', 'izin_keluar'
-    val type_label: String // contoh: 'Izin Masuk'
-)
+    val request_number: String?,
+    val title: String?,
+    val reason: String?,
+    val request_date: String?,
+    val start_time: String?,
+    val end_time: String?,
+    val status: String?,
+    val created_at: String?,
+    val type_code: String?,
+    val type_label: String?,
+    val student_name: String?,
+    val class_name: String?
+) : Parcelable
