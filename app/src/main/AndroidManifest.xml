@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".dialog_filter_surat"
+            android:exported="false" />
+        <activity
             android:name=".halaman_detail_surat_izin_masuk"
             android:exported="false" />
         <activity

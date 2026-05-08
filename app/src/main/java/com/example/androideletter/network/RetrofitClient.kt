@@ -20,7 +20,7 @@ object RetrofitClient {
 
     val instance: EletterApiService by lazy {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL )
             .client(client) // Memasang interceptor ke Retrofit untuk melihat log data[cite: 1]
             .addConverterFactory(GsonConverterFactory.create()) // Memasang Gson untuk konversi JSON[cite: 1]
             .build()
