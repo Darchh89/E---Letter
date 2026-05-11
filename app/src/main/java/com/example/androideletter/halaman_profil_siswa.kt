@@ -3,6 +3,7 @@ package com.example.androideletter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -30,14 +31,19 @@ class halaman_profil_siswa : AppCompatActivity() {
         // ==========================================
         // DEKLARASI VIEW UNTUK DATA
         // ==========================================
+        val ivFotoProfil = findViewById<ImageView>(R.id.iv_foto_profil) // DEKLARASI IMAGEVIEW
         val tvNama = findViewById<TextView>(R.id.tv_nama_profil)
         val tvNisn = findViewById<TextView>(R.id.tv_nisn_profil)
         val tvKelas = findViewById<TextView>(R.id.tv_kelas_value)
         val tvGender = findViewById<TextView>(R.id.tv_gender_value)
         val tvEmail = findViewById<TextView>(R.id.tv_email_value)
 
-        // Panggil fungsi untuk mengambil data dari server
-        muatDataProfilSiswa(tvNama, tvNisn, tvKelas, tvGender, tvEmail)
+        // View tambahan untuk statistik surat
+        val tvTotalMasuk = findViewById<TextView>(R.id.tv_total_izin_masuk)
+        val tvTotalKeluar = findViewById<TextView>(R.id.tv_total_izin_keluar)
+
+        // Panggil fungsi untuk mengambil data dari server (tambahkan parameter ivFotoProfil)
+        muatDataProfilSiswa(ivFotoProfil, tvNama, tvNisn, tvKelas, tvGender, tvEmail, tvTotalMasuk, tvTotalKeluar)
 
         // ==========================================
         // DEKLARASI MENU AKUN
@@ -70,7 +76,10 @@ class halaman_profil_siswa : AppCompatActivity() {
     // FUNGSI UNTUK MENGAMBIL DATA PROFIL
     // ==========================================
     private fun muatDataProfilSiswa(
-        tvNama: TextView, tvNisn: TextView, tvKelas: TextView, tvGender: TextView, tvEmail: TextView
+        ivFotoProfil: ImageView, // Parameter baru
+        tvNama: TextView, tvNisn: TextView, tvKelas: TextView,
+        tvGender: TextView, tvEmail: TextView,
+        tvTotalMasuk: TextView, tvTotalKeluar: TextView
     ) {
         // 1. Ambil Token JWT yang tersimpan saat login
         val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
@@ -82,27 +91,39 @@ class halaman_profil_siswa : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val profile = response.body()
 
-                    // Mengecek dan memasukkan data. Jika kosong/null, ganti jadi "-"
+                    // =========================================
+                    // MENGISI DATA KE UI (Jika null/kosong = "-")
+                    // =========================================
 
                     // Nama
-                    tvNama.text = if (!profile?.full_name.isNullOrEmpty()) profile?.full_name else "-"
+                    tvNama.text = profile?.full_name?.takeIf { it.isNotEmpty() } ?: "-"
 
-                    // NISN (Mengambil dari student_code)
-                    val nisn = if (!profile?.student_code.isNullOrEmpty()) profile?.student_code else "-"
+                    // NISN
+                    val nisn = profile?.student_code?.takeIf { it.isNotEmpty() } ?: "-"
                     tvNisn.text = "NISN: $nisn"
 
                     // Email
-                    tvEmail.text = if (!profile?.email.isNullOrEmpty()) profile?.email else "-"
+                    tvEmail.text = profile?.email?.takeIf { it.isNotEmpty() } ?: "-"
 
-                    // Jenis Kelamin (Konversi dari male/female ke Bahasa Indonesia)
-                    tvGender.text = when (profile?.gender) {
-                        "male" -> "Laki-laki"
-                        "female" -> "Perempuan"
-                        else -> "-"
+                    // Kelas
+                    tvKelas.text = profile?.class_name?.takeIf { it.isNotEmpty() } ?: "-"
+
+                    // Jenis Kelamin & LOGIKA UBAH GAMBAR PROFIL
+                    if (profile?.gender == "male") {
+                        tvGender.text = "Laki-laki"
+                        ivFotoProfil.setImageResource(R.drawable.foto_profil_pria) // Ganti gambar jadi pria
+                    } else if (profile?.gender == "female") {
+                        tvGender.text = "Perempuan"
+                        ivFotoProfil.setImageResource(R.drawable.foto_profil_wanita) // Ganti gambar jadi wanita
+                    } else {
+                        tvGender.text = "-"
+                        // Jika mau ada gambar default kalau kosong, masukkan di sini
+                        // ivFotoProfil.setImageResource(R.drawable.logo_default)
                     }
 
-                    // Kelas (Di database belum ada tabel/kolom khusus kelas, jadi sementara isi "-")
-                    tvKelas.text = "-"
+                    // Total Surat
+                    tvTotalMasuk.text = profile?.total_izin_masuk?.toString() ?: "0"
+                    tvTotalKeluar.text = profile?.total_izin_keluar?.toString() ?: "0"
 
                 } else {
                     Toast.makeText(this@halaman_profil_siswa, "Gagal memuat profil", Toast.LENGTH_SHORT).show()

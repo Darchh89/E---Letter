@@ -8,7 +8,7 @@ data class RegisterRequest(
     val full_name: String,
     val email: String,
     val password: String,
-    val token: String? = null // Bisa null karena backend akan otomatis set untuk siswa
+    val token: String? = null
 )
 
 // Data yang diterima dari server
@@ -39,21 +39,22 @@ data class UserData(
 )
 
 data class StudentProfileResponse(
-    val email: String?,
     val full_name: String?,
     val student_code: String?,
+    val email: String?,
     val gender: String?,
-    val phone: String?,
-    val signature_url: String?
+    val class_name: String?,
+    val total_izin_masuk: Int?,
+    val total_izin_keluar: Int?
 )
 
 // Model untuk mengirim request PUT Edit Profil
 data class UpdateProfileRequest(
     val full_name: String,
     val student_code: String,
-    val gender: String // Diisi 'male' atau 'female' sesuai database
+    val gender: String,
+    val class_id: Int?
 )
-
 // Model untuk response umum yang hanya berisi pesan
 data class GeneralResponse(
     val message: String
@@ -68,8 +69,12 @@ data class SignatureResponse(
 data class DepartmentResponse(
     val id: Int,
     val name: String
-)
-
+) {
+    // TAMBAHAN: Agar di Spinner yang muncul adalah namanya, bukan kode objek
+    override fun toString(): String {
+        return name
+    }
+}
 data class SuratIzinMasukRequest(
     val title: String,
     val department_id: Int,
@@ -96,3 +101,48 @@ data class RiwayatSuratResponse(
     val student_name: String?,
     val class_name: String?
 ) : Parcelable
+
+
+
+// Model untuk menerima hasil pencarian siswa
+data class SearchStudentResponse(
+    val student_id: Int?,
+    val id: Int?,
+    val full_name: String,
+    val class_name: String?
+)
+
+// Model untuk mengirim pengajuan
+data class CreateIzinKeluarRequest(
+    val date: String,
+    val start_time: String,
+    val end_time: String,
+    val reason: String,       
+    val student_ids: List<Int>
+)
+
+data class DetailSuratResponse(
+    val id: Int,
+    val request_number: String?,
+    val reason: String?,
+    val request_date: String?,
+    val start_time: String?,
+    val end_time: String?,
+    val status: String?,
+    val created_at_formatted: String?,
+    val type_label: String?,
+    val students: List<DetailSiswa>,
+    val approvals: List<DetailApproval>
+)
+
+data class DetailSiswa(
+    val full_name: String,
+    val class_name: String?
+)
+
+data class DetailApproval(
+    val approver_role: String,
+    val status: String,
+    val signature_url: String?,
+    val approver_name: String
+)

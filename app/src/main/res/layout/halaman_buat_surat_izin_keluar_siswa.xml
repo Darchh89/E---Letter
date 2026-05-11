@@ -129,12 +129,13 @@
                 app:strokeColor="#E0E0E0"
                 app:strokeWidth="1dp">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/et_judul_keterangan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Masukkan Judul Keterangan"
+                    android:completionThreshold="2"
+                    android:hint="Ketik nama siswa..."
                     android:paddingHorizontal="16dp"
                     android:textColor="@android:color/black"
                     android:textColorHint="#BDBDBD"
@@ -145,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Konsentrasi Keahlian"
+                android:text="Kelas"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -160,31 +161,127 @@
                 app:strokeColor="#E0E0E0"
                 app:strokeWidth="1dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:text="Kelas"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
-                    <Spinner
-                        android:id="@+id/spinner_keahlian"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#F5F5F5"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+
+                    <EditText
+                        android:id="@+id/et_kelas_siswa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="40dp"
-                        android:spinnerMode="dropdown" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="12dp"
                         android:clickable="false"
+                        android:cursorVisible="false"
                         android:focusable="false"
-                        android:src="@android:drawable/arrow_down_float"
-                        app:tint="#BDBDBD" />
-                </RelativeLayout>
+                        android:hint="Terisi otomatis setelah pilih siswa"
+                        android:paddingHorizontal="16dp"
+                        android:textColor="#757575"
+                        android:textColorHint="#BDBDBD"
+                        android:textSize="14sp" />
+                </com.google.android.material.card.MaterialCardView>
             </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/btn_tambah_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_dashed_border"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="#F58220"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Tambah Siswa"
+                    android:textColor="#F58220"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFF3E0"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#FFCC80"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/tv_jumlah_siswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="12dp"
+                    android:text="0 Siswa terdaftar"
+                    android:textColor="#F58220"
+                    android:textSize="12sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/ll_daftar_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_dashed_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_profil_new_biru"
+                    app:tint="#BDBDBD" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Belum ada data siswa."
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klik &quot;Tambah Siswa&quot; untuk menambahkan."
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -227,7 +324,8 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/icon_tanggal_hitam" />
+                        android:src="@drawable/icon_tanggal_hitam"
+                        app:tint="#BDBDBD" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -265,7 +363,7 @@
                         android:background="@null"
                         android:gravity="center"
                         android:hint="--:-- --"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:maxLength="5"
                         android:textColor="@android:color/black"
                         android:textColorHint="#BDBDBD"
@@ -290,7 +388,7 @@
                         android:background="@null"
                         android:gravity="center"
                         android:hint="--:-- --"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:maxLength="5"
                         android:textColor="@android:color/black"
                         android:textColorHint="#BDBDBD"

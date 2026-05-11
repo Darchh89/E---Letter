@@ -198,6 +198,7 @@
                             android:src="@android:drawable/ic_menu_search"
                             app:tint="#9E9E9E" />
                         <EditText
+                            android:id="@+id/et_cari_surat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
@@ -238,7 +239,9 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <!-- ITEM SURAT 1 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_surat_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -296,6 +299,7 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <!-- Label Menunggu (Kuning) -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -334,7 +338,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- ITEM SURAT 2 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_surat_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -392,6 +398,7 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <!-- Label Menunggu (Kuning) -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -426,7 +433,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- ITEM SURAT 3 -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_surat_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -484,6 +493,7 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <!-- Label Menunggu (Kuning) -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -518,7 +528,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- ITEM SURAT 4 (DIUBAH MENJADI DISETUJUI) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_surat_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -576,11 +588,12 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <!-- Label Disetujui (Hijau) -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            app:cardBackgroundColor="#FFF9C4"
+                            app:cardBackgroundColor="#DCFCE7"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
                             <TextView
@@ -588,8 +601,8 @@
                                 android:layout_height="wrap_content"
                                 android:paddingHorizontal="10dp"
                                 android:paddingVertical="4dp"
-                                android:text="Menunggu"
-                                android:textColor="#F57F17"
+                                android:text="Disetujui"
+                                android:textColor="#16A34A"
                                 android:textSize="10sp"
                                 android:textStyle="bold" />
                         </com.google.android.material.card.MaterialCardView>
@@ -610,7 +623,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- ITEM SURAT 5 (DIUBAH MENJADI DITOLAK) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/item_surat_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
@@ -668,11 +683,12 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <!-- Label Ditolak (Merah) -->
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            app:cardBackgroundColor="#FFF9C4"
+                            app:cardBackgroundColor="#FEE2E2"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp">
                             <TextView
@@ -680,8 +696,8 @@
                                 android:layout_height="wrap_content"
                                 android:paddingHorizontal="10dp"
                                 android:paddingVertical="4dp"
-                                android:text="Menunggu"
-                                android:textColor="#F57F17"
+                                android:text="Ditolak"
+                                android:textColor="#DC2626"
                                 android:textSize="10sp"
                                 android:textStyle="bold" />
                         </com.google.android.material.card.MaterialCardView>

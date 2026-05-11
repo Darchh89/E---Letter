@@ -51,10 +51,28 @@ interface EletterApiService {
         @Header("Authorization") token: String
     ): Call<List<RiwayatSuratResponse>>
 
-    @POST("api/student/surat-izin-keluar")
-    fun buatSuratIzinKeluar(
+    @GET("api/student/search")
+    fun searchStudent(
         @Header("Authorization") token: String,
-        @Body request: SuratIzinMasukRequest
+        @Query("q") query: String
+    ): Call<List<SearchStudentResponse>>
+
+    @POST("api/student/surat-izin-keluar")
+    fun buatSuratIzinKeluarMulti(
+        @Header("Authorization") token: String,
+        @Body request: CreateIzinKeluarRequest
     ): Call<GeneralResponse>
 
+
+    @POST("api/student/surat-izin-masuk")
+    fun buatSuratIzinMasukMulti(
+        @Header("Authorization") token: String,
+        @Body request: CreateIzinKeluarRequest // Reusable model request
+    ): Call<GeneralResponse>
+
+    @GET("api/student/request/{id}")
+    fun getDetailSurat(
+        @Header("Authorization") token: String,
+        @Path("id") requestId: Int
+    ): Call<DetailSuratResponse>
 }

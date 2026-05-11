@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FAFAFA"
     tools:context=".halaman_buat_surat_izin_masuk_siswa">
 
-    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -36,7 +35,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- KONTEN FORM DI-SCROLL -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -70,7 +68,6 @@
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
-            <!-- BANNER PERINGATAN -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +81,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <!-- Garis penanda di sebelah kiri -->
                     <View
                         android:layout_width="4dp"
                         android:layout_height="match_parent"
@@ -114,77 +110,307 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 1. JUDUL KETERANGAN -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Judul Keterangan" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                <EditText android:id="@+id/et_judul_keterangan" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:hint="Masukkan Judul Keterangan" android:paddingHorizontal="16dp" android:textColor="@android:color/black" android:textColorHint="#BDBDBD" android:textSize="14sp" />
-            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Nama Siswa"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-            <!-- 2. KONSENTRASI KEAHLIAN (UPDATED) -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Konsentrasi Keahlian" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
 
-                <RelativeLayout
+                <AutoCompleteTextView
+                    android:id="@+id/et_cari_siswa"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Spinner
-                        android:id="@+id/spinner_keahlian"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="40dp"
-                        android:spinnerMode="dropdown" />
-
-                    <!-- Ikon panah bawah (Dibuat tidak bisa diklik agar fokus klik jatuh ke Spinner) -->
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="12dp"
-                        android:clickable="false"
-                        android:focusable="false"
-                        android:src="@android:drawable/arrow_down_float"
-                        app:tint="#BDBDBD" />
-                </RelativeLayout>
-
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:completionThreshold="2"
+                    android:hint="Ketik nama siswa..."
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#BDBDBD"
+                    android:textSize="14sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 3. TANGGAL -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Tanggal" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="16dp">
-                    <EditText android:id="@+id/et_tanggal" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@null" android:focusable="false" android:hint="mm/dd/yyyy" android:textColor="@android:color/black" android:textColorHint="#BDBDBD" android:textSize="14sp" />
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/icon_tanggal_hitam" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Kelas"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#F5F5F5"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <EditText
+                    android:id="@+id/et_kelas_siswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:hint="Terisi otomatis setelah pilih siswa"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="#757575"
+                    android:textColorHint="#BDBDBD"
+                    android:textSize="14sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/btn_tambah_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_dashed_border"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="#AF72E3"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Tambah Siswa"
+                    android:textColor="#AF72E3"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#F6EEFC"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#D1A3F5"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/tv_jumlah_siswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="12dp"
+                    android:text="0 Siswa terdaftar"
+                    android:textColor="#AF72E3"
+                    android:textSize="12sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/ll_daftar_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_dashed_border"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_profil_new_biru"
+                    app:tint="#BDBDBD" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Belum ada data siswa."
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klik &quot;Tambah Siswa&quot; untuk menambahkan."
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Tanggal Masuk"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <EditText
+                        android:id="@+id/et_tanggal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:focusable="false"
+                        android:hint="mm/dd/yyyy"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#BDBDBD"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/icon_tanggal_hitam"
+                        app:tint="#BDBDBD" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 4. PUKUL -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Pukul" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:baselineAligned="false" android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Pukul"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="52dp" android:layout_marginEnd="6dp" android:layout_weight="1" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                    <EditText android:id="@+id/et_waktu_mulai" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:hint="--:-- --" android:inputType="phone" android:maxLength="5" android:textColor="@android:color/black" android:textColorHint="#BDBDBD" android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+
+                    <EditText
+                        android:id="@+id/et_waktu_mulai"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="--:-- --"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#BDBDBD"
+                        android:textSize="14sp" />
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="52dp" android:layout_marginStart="6dp" android:layout_weight="1" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                    <EditText android:id="@+id/et_waktu_selesai" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="center" android:hint="--:-- --" android:inputType="phone" android:maxLength="5" android:textColor="@android:color/black" android:textColorHint="#BDBDBD" android:textSize="14sp" />
-                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
 
+                    <EditText
+                        android:id="@+id/et_waktu_selesai"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:hint="--:-- --"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#BDBDBD"
+                        android:textSize="14sp" />
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- 5. KETERANGAN -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Keterangan" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="120dp" android:layout_marginBottom="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                <EditText android:id="@+id/et_keterangan" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:gravity="top|start" android:inputType="textMultiLine" android:padding="16dp" android:textColor="@android:color/black" android:textColorHint="#BDBDBD" android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:text="Keterangan"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <EditText
+                    android:id="@+id/et_keterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:padding="16dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#BDBDBD"
+                    android:textSize="14sp" />
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- TOMBOL AKSI BAWAH -->
     <LinearLayout
         android:id="@+id/bottom_action_buttons"
         android:layout_width="match_parent"

@@ -99,13 +99,13 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_total_bulan_ini"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12 Izin"
+                            android:text="0 Izin"
                             android:textColor="@color/white"
                             android:textSize="28sp"
                             android:textStyle="bold" />
-
                         <!-- Row Status -->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -133,10 +133,11 @@
                                         android:layout_height="14dp"
                                         android:src="@drawable/icon_disetujui_riwayat" />
                                     <TextView
+                                        android:id="@+id/tv_total_disetujui"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="6dp"
-                                        android:text="8 Disetujui"
+                                        android:text="0 Disetujui"
                                         android:textColor="@color/white"
                                         android:textSize="11sp" />
                                 </LinearLayout>
@@ -161,13 +162,13 @@
                                         android:layout_height="14dp"
                                         android:src="@drawable/icon_menunggu_riwayat" />
                                     <TextView
+                                        android:id="@+id/tv_total_menunggu"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="6dp"
-                                        android:text="3 Menunggu"
+                                        android:text="0 Menunggu"
                                         android:textColor="@color/white"
-                                        android:textSize="11sp" />
-                                </LinearLayout>
+                                        android:textSize="11sp" />                                </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
 
                         </LinearLayout>

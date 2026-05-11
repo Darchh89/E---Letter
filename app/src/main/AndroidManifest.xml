@@ -15,6 +15,15 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".item_detail_siswa_row"
+            android:exported="false" />
+        <activity
+            android:name=".item_detail_ttd_box"
+            android:exported="false" />
+        <activity
+            android:name=".item_siswa_terpilih"
+            android:exported="false" />
+        <activity
             android:name=".dialog_filter_surat"
             android:exported="false" />
         <activity

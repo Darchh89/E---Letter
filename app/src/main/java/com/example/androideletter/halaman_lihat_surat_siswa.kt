@@ -2,12 +2,12 @@ package com.example.androideletter
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.google.android.material.card.MaterialCardView
 
 class halaman_lihat_surat_siswa : AppCompatActivity() {
 
@@ -25,9 +25,10 @@ class halaman_lihat_surat_siswa : AppCompatActivity() {
         // ==========================================
         val btnBack = findViewById<ImageView>(R.id.btn_back)
 
-        val cardDispensasi = findViewById<View>(R.id.card_dispensasi)
-        val cardIzinMasuk = findViewById<View>(R.id.card_izin_masuk)
-        val cardIzinKeluar = findViewById<View>(R.id.card_izin_keluar)
+        // Menggunakan ID yang benar dari file XML
+        val btnLihatDispensasi = findViewById<MaterialCardView>(R.id.btn_lihat_dispensasi)
+        val btnLihatMasuk = findViewById<MaterialCardView>(R.id.btn_lihat_masuk)
+        val btnLihatKeluar = findViewById<MaterialCardView>(R.id.btn_lihat_keluar)
 
         // ==========================================
         // LOGIKA KLIK & NAVIGASI
@@ -38,19 +39,19 @@ class halaman_lihat_surat_siswa : AppCompatActivity() {
         }
 
         // 1. Tombol Surat Dispensasi
-        cardDispensasi?.setOnClickListener {
+        btnLihatDispensasi?.setOnClickListener {
             val intent = Intent(this, halaman_lihat_surat_dispensasi_siswa::class.java)
             startActivity(intent)
         }
 
         // 2. Tombol Surat Izin Masuk
-        cardIzinMasuk?.setOnClickListener {
+        btnLihatMasuk?.setOnClickListener {
             val intent = Intent(this, halaman_lihat_surat_izin_masuk_siswa::class.java)
             startActivity(intent)
         }
 
         // 3. Tombol Surat Izin Keluar
-        cardIzinKeluar?.setOnClickListener {
+        btnLihatKeluar?.setOnClickListener {
             val intent = Intent(this, halaman_lihat_surat_izin_keluar_siswa::class.java)
             startActivity(intent)
         }

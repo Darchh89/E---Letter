@@ -110,7 +110,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <!-- 3. DROPDOWN KONSENTRASI KEAHLIAN -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Konsentrasi Keahlian" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Kelas" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
             <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
                 <!-- Kita gunakan Spinner standar Android untuk dropdown -->
                 <Spinner android:id="@+id/spinner_keahlian" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:paddingHorizontal="12dp" />

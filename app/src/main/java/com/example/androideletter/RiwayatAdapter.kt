@@ -32,10 +32,12 @@ class RiwayatAdapter(private val listRiwayat: List<RiwayatSuratResponse>) :
         // Aman dari nilai kosong (null safety)
         holder.tvJenis.text = item.type_label ?: "Surat Izin"
 
-        // Memotong jam pada format date (misal 2026-04-30T00:00:00.000Z menjadi 2026-04-30)
+        // Memotong jam pada format date (misal 2026-05-10T00:00:00.000Z menjadi 2026-05-10)
         val tanggalSingkat = item.request_date?.split("T")?.get(0) ?: "Tanggal Tidak Diketahui"
-        val judulAman = item.title ?: "Tanpa Judul"
-        holder.tvTanggalJudul.text = "$tanggalSingkat • $judulAman"
+
+        // Menggunakan "reason" (Keterangan) karena database Anda tidak memiliki "title"
+        val keteranganAman = item.reason ?: "Tanpa Keterangan"
+        holder.tvTanggalJudul.text = "$tanggalSingkat • $keteranganAman"
 
         // Mengatur Warna dan Ikon berdasarkan tipe surat
         when (item.type_code) {
@@ -57,7 +59,7 @@ class RiwayatAdapter(private val listRiwayat: List<RiwayatSuratResponse>) :
         }
 
         // ==========================================================
-        // TAMBAHAN: LOGIKA KLIK UNTUK MENUJU HALAMAN DETAIL
+        // LOGIKA KLIK UNTUK MENUJU HALAMAN DETAIL
         // ==========================================================
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
@@ -66,7 +68,7 @@ class RiwayatAdapter(private val listRiwayat: List<RiwayatSuratResponse>) :
             val intent = when (item.type_code) {
                 "izin_masuk" -> Intent(context, halaman_detail_surat_izin_masuk::class.java)
                 "izin_keluar" -> Intent(context, halaman_detail_surat_izin_keluar::class.java)
-                else -> null // Jika ada surat jenis dispensasi, Anda bisa arahkan ke halaman lain nanti
+                else -> null
             }
 
             // Jika intent valid, kirim data Parcelize dan buka halamannya

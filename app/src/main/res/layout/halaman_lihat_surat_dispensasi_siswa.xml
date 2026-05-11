@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
-    tools:context=".halaman_lihat_surat_izin_dispensasi_siswa">
+    tools:context=".halaman_lihat_surat_dispensasi_siswa">
 
     <LinearLayout
         android:id="@+id/header_layout"
@@ -198,6 +198,7 @@
                             android:src="@android:drawable/ic_menu_search"
                             app:tint="#9E9E9E" />
                         <EditText
+                            android:id="@+id/et_cari_surat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"

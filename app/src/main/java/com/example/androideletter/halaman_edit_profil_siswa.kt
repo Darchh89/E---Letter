@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.example.androideletter.model.DepartmentResponse
 import com.example.androideletter.model.GeneralResponse
 import com.example.androideletter.model.UpdateProfileRequest
 import com.example.androideletter.network.RetrofitClient
@@ -20,8 +21,11 @@ import retrofit2.Response
 
 class halaman_edit_profil_siswa : AppCompatActivity() {
 
-    // Simpan nilai sesuai enum database ('male', 'female')
     private var jenisKelaminDipilih = "male"
+    private var selectedClassId: Int? = null
+
+    // Menggunakan DepartmentResponse sesuai yang ada di ApiService dan model Anda
+    private var daftarKelas = ArrayList<DepartmentResponse>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +40,25 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
 
         val etNama = findViewById<EditText>(R.id.et_nama)
         val etNis = findViewById<EditText>(R.id.et_nis)
-
-        // Dropdown Jurusan
         val spinnerJurusan = findViewById<Spinner>(R.id.spinner_keahlian)
-        val daftarKeahlian = arrayOf("Rekayasa Perangkat Lunak", "Teknik Komputer Jaringan", "Multimedia")
-        spinnerJurusan.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, daftarKeahlian)
 
-        // Toggle Jenis Kelamin
+        // Ambil Token Session
+        val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
+        val token = "Bearer " + sharedPref.getString("USER_TOKEN", "")
+
+        // 1. Ambil Data Kelas dari API
+        muatDataKelas(token, spinnerJurusan)
+
+        // 2. Event Listener Spinner Kelas
+        spinnerJurusan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
+                // Simpan ID dari kelas yang dipilih
+                selectedClassId = daftarKelas[position].id
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+        // 3. Toggle Jenis Kelamin (Tanpa ImageView)
         val cardLaki = findViewById<MaterialCardView>(R.id.card_laki)
         val tvLaki = findViewById<TextView>(R.id.tv_laki)
         val cardPerempuan = findViewById<MaterialCardView>(R.id.card_perempuan)
@@ -50,6 +66,7 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
 
         cardLaki.setOnClickListener {
             jenisKelaminDipilih = "male"
+
             cardLaki.setCardBackgroundColor(Color.WHITE)
             cardLaki.cardElevation = 4f
             tvLaki.setTextColor(Color.parseColor("#3FA2F6"))
@@ -61,6 +78,7 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
 
         cardPerempuan.setOnClickListener {
             jenisKelaminDipilih = "female"
+
             cardPerempuan.setCardBackgroundColor(Color.WHITE)
             cardPerempuan.cardElevation = 4f
             tvPerempuan.setTextColor(Color.parseColor("#3FA2F6"))
@@ -83,14 +101,16 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (selectedClassId == null) {
+                Toast.makeText(this, "Harap tunggu daftar kelas dimuat", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             btnLanjut.isEnabled = false
             btnLanjut.text = "Menyimpan..."
 
-            // Ambil Token dari Session
-            val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
-            val token = "Bearer " + sharedPref.getString("USER_TOKEN", "")
-
-            val request = UpdateProfileRequest(nama, nis, jenisKelaminDipilih)
+            // Masukkan data request termasuk ID kelas (class_id)
+            val request = UpdateProfileRequest(nama, nis, jenisKelaminDipilih, selectedClassId)
 
             RetrofitClient.instance.updateStudentProfile(token, request).enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -112,5 +132,29 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    // Fungsi fetch data kelas menggunakan DepartmentResponse
+    private fun muatDataKelas(token: String, spinner: Spinner) {
+        RetrofitClient.instance.getClasses(token).enqueue(object : Callback<List<DepartmentResponse>> {
+            override fun onResponse(call: Call<List<DepartmentResponse>>, response: Response<List<DepartmentResponse>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    daftarKelas.clear()
+                    daftarKelas.addAll(response.body()!!)
+
+                    // Masukkan ke Spinner menggunakan Adapter
+                    val adapter = ArrayAdapter(
+                        this@halaman_edit_profil_siswa,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        daftarKelas
+                    )
+                    spinner.adapter = adapter
+                }
+            }
+
+            override fun onFailure(call: Call<List<DepartmentResponse>>, t: Throwable) {
+                Toast.makeText(this@halaman_edit_profil_siswa, "Gagal memuat daftar kelas", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
