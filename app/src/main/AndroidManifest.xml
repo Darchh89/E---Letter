@@ -15,6 +15,18 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".detail_surat_izin_dispensasi"
+            android:exported="false" />
+        <activity
+            android:name=".dialog_surat_berhasil_dispensasi"
+            android:exported="false" />
+        <activity
+            android:name=".dialog_konfirmasi_pengajuan_dispensasi"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_buat_surat_dispensasi_guru_data_siswa"
+            android:exported="false" />
+        <activity
             android:name=".item_detail_siswa_row"
             android:exported="false" />
         <activity
