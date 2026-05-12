@@ -3,161 +3,188 @@ package com.example.androideletter
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.bumptech.glide.Glide
-import com.example.androideletter.model.DetailApproval
+import com.example.androideletter.network.RetrofitClient
 import com.example.androideletter.model.DetailSuratResponse
 import com.example.androideletter.model.RiwayatSuratResponse
-import com.example.androideletter.network.RetrofitClient
+import com.google.android.material.card.MaterialCardView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class halaman_detail_surat_izin_keluar : AppCompatActivity() {
 
-    private lateinit var llWadahSiswa: LinearLayout
-    private lateinit var llWadahTtd: LinearLayout
+    // === GANTI INI DENGAN IP LAPTOP ANDA YANG BENAR ===
+    private val serverIp = "172.19.233.99"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.halaman_detail_surat_izin_keluar)
 
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-
         findViewById<ImageView>(R.id.btn_back).setOnClickListener { finish() }
 
-        llWadahSiswa = findViewById(R.id.ll_wadah_siswa)
-        llWadahTtd = findViewById(R.id.ll_wadah_ttd)
+        // Ambil ID dari Intent
+        val dataIntent = intent.getParcelableExtra<RiwayatSuratResponse>("DATA_SURAT")
 
-        // Tangkap data dasar dari intent Adapter Riwayat
-        val dataSuratDasar = intent.getParcelableExtra<RiwayatSuratResponse>("DATA_SURAT")
-
-        if (dataSuratDasar != null) {
-            muatDetailPenuhSurat(dataSuratDasar.id)
+        if (dataIntent != null) {
+            fetchDetailDariServer(dataIntent.id)
         } else {
             Toast.makeText(this, "Data surat tidak ditemukan", Toast.LENGTH_SHORT).show()
-            finish()
         }
     }
 
-    private fun muatDetailPenuhSurat(requestId: Int) {
+    private fun fetchDetailDariServer(requestId: Int) {
         val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
         val token = "Bearer " + sharedPref.getString("USER_TOKEN", "")
 
         RetrofitClient.instance.getDetailSurat(token, requestId).enqueue(object : Callback<DetailSuratResponse> {
             override fun onResponse(call: Call<DetailSuratResponse>, response: Response<DetailSuratResponse>) {
                 if (response.isSuccessful && response.body() != null) {
-                    val detail = response.body()!!
-                    terapkanDataKeUI(detail)
+                    tampilkanDataKeLayar(response.body()!!)
+                } else {
+                    Toast.makeText(this@halaman_detail_surat_izin_keluar, "Gagal mengambil detail", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onFailure(call: Call<DetailSuratResponse>, t: Throwable) {
-                Toast.makeText(this@halaman_detail_surat_izin_keluar, "Gagal memuat detail", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@halaman_detail_surat_izin_keluar, "Koneksi Error", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun terapkanDataKeUI(detail: DetailSuratResponse) {
-        // 1. Set Info Teks Dasar
-        findViewById<TextView>(R.id.tv_detail_tanggal).text = detail.request_date
-        findViewById<TextView>(R.id.tv_detail_waktu).text = "${detail.start_time} - ${detail.end_time}"
-        findViewById<TextView>(R.id.tv_detail_alasan).text = detail.reason
+    private fun tampilkanDataKeLayar(data: DetailSuratResponse) {
+        findViewById<TextView>(R.id.tv_tanggal_izin).text = data.request_date ?: "-"
+        findViewById<TextView>(R.id.tv_waktu_izin).text = "${data.start_time ?: "-"} - ${data.end_time ?: "-"}"
+        findViewById<TextView>(R.id.tv_keperluan).text = data.reason ?: "-"
+        findViewById<TextView>(R.id.tv_id_permohonan).text = data.request_number ?: "-"
+        findViewById<TextView>(R.id.tv_tanggal_pembuatan).text = data.created_at_formatted ?: "-"
 
-        // Info Permohonan
-        findViewById<TextView>(R.id.tv_id_permohonan).text = detail.request_number
-        findViewById<TextView>(R.id.tv_tanggal_pembuatan).text = detail.created_at_formatted
+        // Dinamis Multi-Siswa dengan Warna ORANYE
+        val llContainerSiswa = findViewById<LinearLayout>(R.id.ll_container_siswa)
+        llContainerSiswa.removeAllViews()
 
-        // 2. Looping Daftar Siswa
-        llWadahSiswa.removeAllViews()
-        for (siswa in detail.students) {
-            val viewSiswa = layoutInflater.inflate(R.layout.item_detail_siswa_row, llWadahSiswa, false)
-            viewSiswa.findViewById<TextView>(R.id.tv_row_nama_siswa).text = siswa.full_name
-            viewSiswa.findViewById<TextView>(R.id.tv_row_kelas_siswa).text = siswa.class_name ?: "Belum ada kelas"
-            llWadahSiswa.addView(viewSiswa)
+        for (siswa in data.students) {
+            val cardSiswa = MaterialCardView(this).apply {
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+                    setMargins(0, 0, 0, 16)
+                }
+                setCardBackgroundColor(Color.parseColor("#FFF0E6")) // Oren Muda
+                radius = 24f
+                cardElevation = 0f
+            }
+
+            val layoutHorizontal = LinearLayout(this).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = Gravity.CENTER_VERTICAL
+                setPadding(32, 32, 32, 32)
+            }
+
+            val cardIkon = MaterialCardView(this).apply {
+                layoutParams = LinearLayout.LayoutParams(90, 90)
+                setCardBackgroundColor(Color.parseColor("#FFCC80"))
+                radius = 45f
+                cardElevation = 0f
+            }
+            val ikonUser = ImageView(this).apply {
+                setImageResource(android.R.drawable.ic_menu_myplaces)
+                setColorFilter(Color.parseColor("#E65100"))
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT).apply {
+                    setMargins(16, 16, 16, 16)
+                }
+            }
+            cardIkon.addView(ikonUser)
+
+            val layoutTeks = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(32, 0, 0, 0)
+            }
+            val tvNama = TextView(this).apply {
+                text = siswa.full_name
+                setTextColor(Color.parseColor("#374151"))
+                textSize = 14f
+                setTypeface(null, android.graphics.Typeface.BOLD)
+            }
+            val tvKelas = TextView(this).apply {
+                text = siswa.class_name ?: "-"
+                setTextColor(Color.parseColor("#6B7280"))
+                textSize = 12f
+            }
+
+            layoutTeks.addView(tvNama)
+            layoutTeks.addView(tvKelas)
+            layoutHorizontal.addView(cardIkon)
+            layoutHorizontal.addView(layoutTeks)
+            cardSiswa.addView(layoutHorizontal)
+            llContainerSiswa.addView(cardSiswa)
         }
 
-        // 3. TANDA TANGAN (HANYA SISWA & PETUGAS)
-        llWadahTtd.removeAllViews()
-        val ttdSiswa = detail.approvals.find { it.approver_role == "student" }
-        val ttdPetugas = detail.approvals.find { it.approver_role == "tatib" }
+        // LOGIKA STATUS & WARNA
+        val cvWarning = findViewById<MaterialCardView>(R.id.cv_warning_ditolak)
+        val cvStatusAtas = findViewById<MaterialCardView>(R.id.cv_status_atas)
+        val tvStatusAtas = findViewById<TextView>(R.id.tv_status_atas)
+        val tvStatusTtdGuru = findViewById<TextView>(R.id.tv_status_ttd_guru)
+        val ivTtdGuru = findViewById<ImageView>(R.id.iv_ttd_guru)
 
-        tambahkanKotakTtd("student", "Siswa Pemohon", ttdSiswa)
-        tambahkanKotakTtd("tatib", "Petugas Piket", ttdPetugas)
-    }
-
-    // ==========================================
-    // FUNGSI UNTUK MENCETAK KOTAK TANDA TANGAN
-    // ==========================================
-    private fun tambahkanKotakTtd(roleCode: String, namaDefault: String, dataApproval: DetailApproval?) {
-        // Inflate desain item_detail_ttd_box.xml
-        val viewTtd = layoutInflater.inflate(R.layout.item_detail_ttd_box, llWadahTtd, false)
-
-        val tvNama = viewTtd.findViewById<TextView>(R.id.tv_nama_ttd)
-        val tvRole = viewTtd.findViewById<TextView>(R.id.tv_role_ttd)
-        val tvStatus = viewTtd.findViewById<TextView>(R.id.tv_status_ttd)
-        val ivTtd = viewTtd.findViewById<ImageView>(R.id.iv_gambar_ttd)
-
-        // Set nama perannya
-        tvRole.text = if (roleCode == "student") "Siswa (Pemohon)" else "Petugas / Tatib"
-
-        // Jika data dari database ditemukan
-        if (dataApproval != null) {
-            tvNama.text = dataApproval.approver_name
-
-            if (dataApproval.status == "approved") {
-                // TTD Disetujui
-                tvStatus.visibility = View.GONE
-                ivTtd.visibility = View.VISIBLE
-
-                // Logika untuk menampilkan gambar TTD asli dari server menggunakan Glide
-                if (!dataApproval.signature_url.isNullOrEmpty()) {
-                    val baseUrl = "http://192.168.1.6:3000" // Pastikan IP ini sesuai dengan IP komputer Anda saat ini
-
-                    Glide.with(this)
-                        .load(baseUrl + dataApproval.signature_url)
-                        .placeholder(R.drawable.icon_disetujui_riwayat) // Gambar sementara saat proses loading
-                        .error(R.drawable.icon_disetujui_riwayat)       // Gambar jika gagal dimuat / URL rusak
-                        .into(ivTtd)
-                } else {
-                    // Fallback: Jika di database statusnya approved tapi tidak ada file gambar
-                    ivTtd.setImageResource(R.drawable.icon_disetujui_riwayat)
-                }
-
-            } else if (dataApproval.status == "rejected") {
-                // TTD Ditolak
-                tvStatus.visibility = View.VISIBLE
-                ivTtd.visibility = View.GONE
-                tvStatus.text = "DITOLAK"
-                tvStatus.setTextColor(Color.parseColor("#C62828"))
-            } else {
-                // TTD Menunggu / Pending
-                tvStatus.visibility = View.VISIBLE
-                ivTtd.visibility = View.GONE
-                tvStatus.text = "MENUNGGU"
-                tvStatus.setTextColor(Color.parseColor("#F57F17"))
+        when (data.status) {
+            "approved" -> {
+                cvWarning.visibility = View.GONE
+                tvStatusAtas.text = "Disetujui"
+                tvStatusAtas.setTextColor(Color.parseColor("#4CAF50"))
+                cvStatusAtas.setCardBackgroundColor(Color.parseColor("#E8F5E9"))
+                tvStatusTtdGuru.visibility = View.GONE
+                ivTtdGuru.visibility = View.VISIBLE
+            }
+            "rejected" -> {
+                cvWarning.visibility = View.VISIBLE
+                tvStatusAtas.text = "Ditolak"
+                tvStatusAtas.setTextColor(Color.parseColor("#F44336"))
+                cvStatusAtas.setCardBackgroundColor(Color.parseColor("#FFEBEE"))
+                tvStatusTtdGuru.visibility = View.VISIBLE
+                tvStatusTtdGuru.text = "DITOLAK"
+                tvStatusTtdGuru.setTextColor(Color.parseColor("#F44336"))
+                ivTtdGuru.visibility = View.GONE
+            }
+            else -> {
+                cvWarning.visibility = View.GONE
+                tvStatusAtas.text = "Menunggu"
+                tvStatusAtas.setTextColor(Color.parseColor("#FF9800"))
+                cvStatusAtas.setCardBackgroundColor(Color.parseColor("#FFF9C4"))
+                tvStatusTtdGuru.visibility = View.VISIBLE
+                tvStatusTtdGuru.text = "MENUNGGU"
+                tvStatusTtdGuru.setTextColor(Color.parseColor("#374151"))
+                ivTtdGuru.visibility = View.GONE
             }
         }
-        // Jika data dari database belum ada sama sekali (menjamin kotak tetap muncul)
-        else {
-            tvNama.text = namaDefault
-            tvStatus.visibility = View.VISIBLE
-            ivTtd.visibility = View.GONE
-            tvStatus.text = "MENUNGGU"
-            tvStatus.setTextColor(Color.parseColor("#F57F17"))
+
+        // RENDER GAMBAR TANDA TANGAN (GLIDE)
+        val ivTtdSiswa = findViewById<ImageView>(R.id.iv_ttd_siswa)
+
+        if (!data.student_signature_url.isNullOrEmpty()) {
+            ivTtdSiswa.imageTintList = null
+            val urlSiswa = "http://$serverIp:3000${data.student_signature_url}"
+            Glide.with(this).load(urlSiswa).into(ivTtdSiswa)
+        } else {
+            ivTtdSiswa.setImageResource(android.R.drawable.ic_menu_edit)
         }
 
-        // Tambahkan ke dalam horizontal scroll view
-        llWadahTtd.addView(viewTtd)
+        if (data.students.isNotEmpty()) {
+            findViewById<TextView>(R.id.tv_ttd_nama_siswa).text = data.students[0].full_name
+        }
+
+        if (data.status == "approved" && data.approvals.isNotEmpty()) {
+            val approvalTerakhir = data.approvals[0]
+            if (!approvalTerakhir.signature_url.isNullOrEmpty()) {
+                ivTtdGuru.imageTintList = null
+                val urlGuru = "http://$serverIp:3000${approvalTerakhir.signature_url}"
+                Glide.with(this).load(urlGuru).into(ivTtdGuru)
+            }
+            findViewById<TextView>(R.id.tv_ttd_nama_guru).text = approvalTerakhir.approver_name ?: "Petugas"
+        }
     }
 }

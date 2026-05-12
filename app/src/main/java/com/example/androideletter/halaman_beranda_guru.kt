@@ -21,50 +21,8 @@ class halaman_beranda_guru : AppCompatActivity() {
         // HILANGKAN NAVBAR BAWAAN HP
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
         windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE}}
 
         // ==========================================
         // DEKLARASI KARTU MENU TENGAH
         // ==========================================
-        val cardLihatSurat = findViewById<MaterialCardView>(R.id.card_lihat_surat)
-        val cardBuatSurat = findViewById<MaterialCardView>(R.id.card_buat_surat)
-
-        // ==========================================
-        // DEKLARASI TOMBOL NAVIGASI BAWAH
-        // ==========================================
-        val navPanduan = findViewById<LinearLayout>(R.id.nav_panduan)
-        val navRiwayat = findViewById<LinearLayout>(R.id.nav_riwayat)
-        val navProfil = findViewById<LinearLayout>(R.id.nav_profil)
-
-        // ==========================================
-        // LOGIKA KLIK MENU TENGAH
-        // ==========================================
-
-        cardLihatSurat.setOnClickListener {
-            // Nanti bisa diarahkan jika halaman lihat surat untuk guru sudah dibuat
-            Toast.makeText(this, "Membuka halaman Lihat Surat...", Toast.LENGTH_SHORT).show()
-        }
-
-        // MENGARAH KE HALAMAN BUAT SURAT DISPENSASI GURU
-        cardBuatSurat.setOnClickListener {
-            val intent = Intent(this, halaman_buat_surat_dispensasi_guru::class.java)
-            startActivity(intent)
-        }
-
-        // ==========================================
-        // LOGIKA KLIK NAVIGASI BAWAH
-        // ==========================================
-
-        navPanduan.setOnClickListener {
-            startActivity(Intent(this, halaman_panduan_guru::class.java))
-        }
-
-        navRiwayat.setOnClickListener {
-            startActivity(Intent(this, halaman_riwayat_guru::class.java))
-        }
-
-        navProfil.setOnClickListener {
-            startActivity(Intent(this, halaman_profil_guru::class.java))
-        }
-    }
-}

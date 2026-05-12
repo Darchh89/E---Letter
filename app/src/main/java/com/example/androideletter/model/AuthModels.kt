@@ -121,6 +121,18 @@ data class CreateIzinKeluarRequest(
     val student_ids: List<Int>
 )
 
+data class StudentItem(
+    val full_name: String,
+    val class_name: String?
+)
+
+data class ApprovalItem(
+    val approver_role: String,
+    val status: String,
+    val signature_url: String?,
+    val approver_name: String?
+)
+
 data class DetailSuratResponse(
     val id: Int,
     val request_number: String?,
@@ -131,8 +143,9 @@ data class DetailSuratResponse(
     val status: String?,
     val created_at_formatted: String?,
     val type_label: String?,
-    val students: List<DetailSiswa>,
-    val approvals: List<DetailApproval>
+    val student_signature_url: String?, // TTD Siswa
+    val students: List<StudentItem>,    // Daftar Multi-Siswa
+    val approvals: List<ApprovalItem>   // Daftar TTD Guru
 )
 
 data class DetailSiswa(

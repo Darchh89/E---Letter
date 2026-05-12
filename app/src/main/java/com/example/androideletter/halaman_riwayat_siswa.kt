@@ -114,8 +114,9 @@ class halaman_riwayat_siswa : AppCompatActivity() {
         val currentMonth = sdf.format(Date())
 
         for (item in dataRiwayat) {
-            // Cek apakah tanggal tidak kosong dan diawali dengan tahun-bulan saat ini
-            if (item.request_date != null && item.request_date.startsWith(currentMonth)) {
+            // Cek apakah request_date tidak kosong dan terjadi di bulan ini
+            // request_date dari database berbentuk ISO (2026-05-06T...) jadi aman memakai startsWith
+            if (!item.request_date.isNullOrEmpty() && item.request_date.startsWith(currentMonth)) {
                 totalBulanIni++
                 when (item.status) {
                     "approved" -> disetujuiBulanIni++

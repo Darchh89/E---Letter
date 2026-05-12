@@ -1,6 +1,7 @@
 package com.example.androideletter
 
-import android.content.Intent
+import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -9,165 +10,203 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.androideletter.network.RetrofitClient
+import com.example.androideletter.model.RiwayatSuratResponse
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class halaman_lihat_surat_izin_keluar_siswa : AppCompatActivity() {
 
-    // Menyimpan state/kondisi yang sedang aktif
-    private var filterAktif = "Semua"
-    private var kataKunciPencarian = ""
+    private lateinit var rvSuratKeluar: RecyclerView
+    private lateinit var tvTotalIzin: TextView
+    private lateinit var tvTotalDisetujui: TextView
+    private lateinit var tvTotalDitolak: TextView
+    private lateinit var etCariSurat: EditText
+    private lateinit var btnFilter: MaterialCardView
 
-    // Kita buat daftar data statis untuk dicocokkan dengan ID di XML
-    data class SuratDummy(val viewId: Int, val status: String, val nomorSurat: String)
-
-    private val daftarSurat = listOf(
-        SuratDummy(R.id.item_surat_1, "Menunggu", "SRT-KLR-005"),
-        SuratDummy(R.id.item_surat_2, "Menunggu", "SRT-KLR-004"),
-        SuratDummy(R.id.item_surat_3, "Menunggu", "SRT-KLR-003"),
-        SuratDummy(R.id.item_surat_4, "Disetujui", "SRT-KLR-002"),
-        SuratDummy(R.id.item_surat_5, "Ditolak", "SRT-KLR-001")
-    )
+    // Variabel Data dan State Filter/Search
+    private var listSuratKeluar = listOf<RiwayatSuratResponse>()
+    private var currentKeyword = ""
+    private var currentFilterStatus = "semua" // "semua", "pending", "approved", "rejected"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.halaman_lihat_surat_izin_keluar_siswa)
 
-        // HILANGKAN NAVBAR BAWAAN HP
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars())
-        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        // Tombol Kembali
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener { finish() }
 
-        // =====================================
-        // LOGIKA TOMBOL BACK (KEMBALI KE MENU)
-        // =====================================
-        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
-            val intent = Intent(this, halaman_lihat_surat_siswa::class.java)
-            // Membersihkan tumpukan halaman agar HP tidak lag
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-            finish()
-        }
+        // Inisialisasi View
+        rvSuratKeluar = findViewById(R.id.rv_surat_keluar)
+        rvSuratKeluar.layoutManager = LinearLayoutManager(this)
 
-        // =====================================
-        // LOGIKA PENCARIAN
-        // =====================================
-        val etCariSurat = findViewById<EditText>(R.id.et_cari_surat)
+        tvTotalIzin = findViewById(R.id.tv_total_izin)
+        tvTotalDisetujui = findViewById(R.id.tv_total_disetujui)
+        tvTotalDitolak = findViewById(R.id.tv_total_ditolak)
+        etCariSurat = findViewById(R.id.et_cari_surat)
+        btnFilter = findViewById(R.id.btn_filter)
+
+        // Ambil Data dari API
+        muatDataSuratKeluar()
+
+        // Event Listener untuk Pencarian (Ketik)
         etCariSurat.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                // Simpan kata yang diketik pengguna
-                kataKunciPencarian = s.toString().trim()
-                // Jalankan kombinasi filter dan pencarian
-                jalankanPenyaringan()
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                currentKeyword = s.toString().lowercase()
+                terapkanFilterDanPencarian() // Panggil fungsi gabungan
             }
+            override fun afterTextChanged(s: Editable?) {}
         })
 
-        // =====================================
-        // LOGIKA TOMBOL FILTER
-        // =====================================
-        val btnFilter = findViewById<MaterialCardView>(R.id.btn_filter)
+        // Event Listener untuk Tombol Filter
         btnFilter.setOnClickListener {
             tampilkanDialogFilter()
         }
     }
 
+    private fun muatDataSuratKeluar() {
+        val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
+        val token = "Bearer " + sharedPref.getString("USER_TOKEN", "")
+
+        RetrofitClient.instance.getHistorySurat(token).enqueue(object : Callback<List<RiwayatSuratResponse>> {
+            override fun onResponse(call: Call<List<RiwayatSuratResponse>>, response: Response<List<RiwayatSuratResponse>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    // Filter khusus jenis "Izin Keluar" dari database
+                    listSuratKeluar = response.body()!!.filter { it.type_code == "izin_keluar" }
+                    terapkanFilterDanPencarian() // Tampilkan data ke adapter
+                    hitungStatistik(listSuratKeluar) // Update kotak biru
+                } else {
+                    Toast.makeText(this@halaman_lihat_surat_izin_keluar_siswa, "Gagal memuat data", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<RiwayatSuratResponse>>, t: Throwable) {
+                Toast.makeText(this@halaman_lihat_surat_izin_keluar_siswa, "Error koneksi", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    // ========================================================
+    // FUNGSI GABUNGAN: SEARCH & FILTER
+    // ========================================================
+    private fun terapkanFilterDanPencarian() {
+        val listFiltered = listSuratKeluar.filter { surat ->
+            // 1. Cek kecocokan pencarian (Keyword)
+            val matchKeyword = surat.request_number?.lowercase()?.contains(currentKeyword) == true ||
+                    surat.title?.lowercase()?.contains(currentKeyword) == true
+
+            // 2. Cek kecocokan status (Filter Dialog)
+            val matchStatus = if (currentFilterStatus == "semua") {
+                true
+            } else {
+                surat.status == currentFilterStatus
+            }
+
+            // Harus cocok kedua-duanya
+            matchKeyword && matchStatus
+        }
+
+        // Terapkan ke RecyclerView
+        rvSuratKeluar.adapter = RiwayatAdapter(listFiltered)
+    }
+
+    // ========================================================
+    // LOGIKA DIALOG FILTER BAWAH (BOTTOM SHEET)
+    // ========================================================
     private fun tampilkanDialogFilter() {
         val bottomSheetDialog = BottomSheetDialog(this)
-        bottomSheetDialog.setContentView(R.layout.dialog_filter_surat)
+        val view = layoutInflater.inflate(R.layout.dialog_filter_surat, null)
+        bottomSheetDialog.setContentView(view)
 
-        var filterPilihanSementara = filterAktif
+        // Variabel penampung sementara saat dialog sedang dibuka
+        var tempFilterStatus = currentFilterStatus
 
-        val btnTutup = bottomSheetDialog.findViewById<ImageView>(R.id.btn_tutup_filter)
-        val btnTerapkan = bottomSheetDialog.findViewById<MaterialButton>(R.id.btn_terapkan_filter)
-        val btnReset = bottomSheetDialog.findViewById<MaterialButton>(R.id.btn_reset_filter)
+        // Inisialisasi View dari XML Dialog
+        val cardSemua = view.findViewById<MaterialCardView>(R.id.filter_semua)
+        val rbSemua = view.findViewById<RadioButton>(R.id.rb_semua)
 
-        val cardSemua = bottomSheetDialog.findViewById<MaterialCardView>(R.id.filter_semua)
-        val cardMenunggu = bottomSheetDialog.findViewById<MaterialCardView>(R.id.filter_menunggu)
-        val cardDisetujui = bottomSheetDialog.findViewById<MaterialCardView>(R.id.filter_disetujui)
-        val cardDitolak = bottomSheetDialog.findViewById<MaterialCardView>(R.id.filter_ditolak)
+        val cardMenunggu = view.findViewById<MaterialCardView>(R.id.filter_menunggu)
+        val rbMenunggu = view.findViewById<RadioButton>(R.id.rb_menunggu)
 
-        fun updateUIDialog() {
-            // Reset warna
-            val allCards = listOf(cardSemua, cardMenunggu, cardDisetujui, cardDitolak)
-            for (card in allCards) {
-                card?.setCardBackgroundColor(Color.parseColor("#F9FAFB"))
-                card?.strokeColor = Color.parseColor("#E5E7EB")
-                val rb = card?.getChildAt(0)?.findViewById<RadioButton>(card.getChildAt(0).resources.getIdentifier("rb_${card.resources.getResourceEntryName(card.id).substringAfter("_")}", "id", packageName))
-                rb?.isChecked = false
+        val cardDisetujui = view.findViewById<MaterialCardView>(R.id.filter_disetujui)
+        val rbDisetujui = view.findViewById<RadioButton>(R.id.rb_disetujui)
+
+        val cardDitolak = view.findViewById<MaterialCardView>(R.id.filter_ditolak)
+        val rbDitolak = view.findViewById<RadioButton>(R.id.rb_ditolak)
+
+        // Fungsi internal untuk merubah warna (Aktif/Pasif)
+        fun updateUIDialog(statusDipilih: String) {
+            // Reset semua ke warna abu-abu / pasif
+            val bgPasif = Color.parseColor("#F9FAFB")
+            val strokePasif = Color.parseColor("#E5E7EB")
+            val tintPasif = ColorStateList.valueOf(Color.parseColor("#D1D5DB"))
+
+            cardSemua.setCardBackgroundColor(bgPasif); cardSemua.strokeColor = strokePasif; rbSemua.isChecked = false; rbSemua.buttonTintList = tintPasif
+            cardMenunggu.setCardBackgroundColor(bgPasif); cardMenunggu.strokeColor = strokePasif; rbMenunggu.isChecked = false; rbMenunggu.buttonTintList = tintPasif
+            cardDisetujui.setCardBackgroundColor(bgPasif); cardDisetujui.strokeColor = strokePasif; rbDisetujui.isChecked = false; rbDisetujui.buttonTintList = tintPasif
+            cardDitolak.setCardBackgroundColor(bgPasif); cardDitolak.strokeColor = strokePasif; rbDitolak.isChecked = false; rbDitolak.buttonTintList = tintPasif
+
+            // Set yang terpilih menjadi biru / aktif
+            val bgAktif = Color.parseColor("#F0F8FF")
+            val strokeAktif = Color.parseColor("#3FA2F6")
+            val tintAktif = ColorStateList.valueOf(Color.parseColor("#3FA2F6"))
+
+            when (statusDipilih) {
+                "semua" -> { cardSemua.setCardBackgroundColor(bgAktif); cardSemua.strokeColor = strokeAktif; rbSemua.isChecked = true; rbSemua.buttonTintList = tintAktif }
+                "pending" -> { cardMenunggu.setCardBackgroundColor(bgAktif); cardMenunggu.strokeColor = strokeAktif; rbMenunggu.isChecked = true; rbMenunggu.buttonTintList = tintAktif }
+                "approved" -> { cardDisetujui.setCardBackgroundColor(bgAktif); cardDisetujui.strokeColor = strokeAktif; rbDisetujui.isChecked = true; rbDisetujui.buttonTintList = tintAktif }
+                "rejected" -> { cardDitolak.setCardBackgroundColor(bgAktif); cardDitolak.strokeColor = strokeAktif; rbDitolak.isChecked = true; rbDitolak.buttonTintList = tintAktif }
             }
-
-            // Ubah warna yang diklik
-            val kartuAktif = when (filterPilihanSementara) {
-                "Menunggu" -> cardMenunggu
-                "Disetujui" -> cardDisetujui
-                "Ditolak" -> cardDitolak
-                else -> cardSemua
-            }
-            kartuAktif?.setCardBackgroundColor(Color.parseColor("#F0F8FF"))
-            kartuAktif?.strokeColor = Color.parseColor("#3FA2F6")
-
-            val rbAktif = when (filterPilihanSementara) {
-                "Menunggu" -> bottomSheetDialog.findViewById<RadioButton>(R.id.rb_menunggu)
-                "Disetujui" -> bottomSheetDialog.findViewById<RadioButton>(R.id.rb_disetujui)
-                "Ditolak" -> bottomSheetDialog.findViewById<RadioButton>(R.id.rb_ditolak)
-                else -> bottomSheetDialog.findViewById<RadioButton>(R.id.rb_semua)
-            }
-            rbAktif?.isChecked = true
         }
 
-        updateUIDialog()
+        // Terapkan warna awal saat dialog dibuka
+        updateUIDialog(tempFilterStatus)
 
-        cardSemua?.setOnClickListener { filterPilihanSementara = "Semua"; updateUIDialog() }
-        cardMenunggu?.setOnClickListener { filterPilihanSementara = "Menunggu"; updateUIDialog() }
-        cardDisetujui?.setOnClickListener { filterPilihanSementara = "Disetujui"; updateUIDialog() }
-        cardDitolak?.setOnClickListener { filterPilihanSementara = "Ditolak"; updateUIDialog() }
+        // Event Klik pada setiap kotak di dialog
+        cardSemua.setOnClickListener { tempFilterStatus = "semua"; updateUIDialog(tempFilterStatus) }
+        cardMenunggu.setOnClickListener { tempFilterStatus = "pending"; updateUIDialog(tempFilterStatus) }
+        cardDisetujui.setOnClickListener { tempFilterStatus = "approved"; updateUIDialog(tempFilterStatus) }
+        cardDitolak.setOnClickListener { tempFilterStatus = "rejected"; updateUIDialog(tempFilterStatus) }
 
-        btnReset?.setOnClickListener {
-            filterPilihanSementara = "Semua"
-            updateUIDialog()
-        }
-
-        btnTutup?.setOnClickListener {
+        // Tombol Tutup (X)
+        view.findViewById<ImageView>(R.id.btn_tutup_filter).setOnClickListener {
             bottomSheetDialog.dismiss()
         }
 
-        btnTerapkan?.setOnClickListener {
-            filterAktif = filterPilihanSementara
-            jalankanPenyaringan()
+        // Tombol Reset
+        view.findViewById<MaterialButton>(R.id.btn_reset_filter).setOnClickListener {
+            currentFilterStatus = "semua" // Kembalikan ke semua
+            terapkanFilterDanPencarian()
+            bottomSheetDialog.dismiss()
+        }
+
+        // Tombol Terapkan
+        view.findViewById<MaterialButton>(R.id.btn_terapkan_filter).setOnClickListener {
+            currentFilterStatus = tempFilterStatus // Simpan pilihan
+            terapkanFilterDanPencarian()
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetDialog.show()
     }
 
-    // Fungsi Gabungan untuk Pencarian & Filter
-    private fun jalankanPenyaringan() {
-        val query = kataKunciPencarian.lowercase()
+    private fun hitungStatistik(data: List<RiwayatSuratResponse>) {
+        val total = data.size
+        val disetujui = data.count { it.status == "approved" }
+        val ditolak = data.count { it.status == "rejected" }
 
-        // Looping (cek satu persatu) kelima kartu surat
-        for (surat in daftarSurat) {
-            val view = findViewById<MaterialCardView>(surat.viewId) ?: continue
-
-            // 1. Cek apakah statusnya cocok dengan filter saat ini
-            val cocokFilter = if (filterAktif == "Semua") true else surat.status == filterAktif
-
-            // 2. Cek apakah teksnya cocok dengan kata kunci pencarian (berdasarkan nomor surat)
-            val cocokPencarian = if (query.isEmpty()) true else surat.nomorSurat.lowercase().contains(query)
-
-            // TAMPILKAN jika cocok keduanya, SEMBUNYIKAN jika salah satunya tidak cocok
-            if (cocokFilter && cocokPencarian) {
-                view.visibility = View.VISIBLE
-            } else {
-                view.visibility = View.GONE
-            }
-        }
+        tvTotalIzin.text = "$total Izin"
+        tvTotalDisetujui.text = "✓ $disetujui Disetujui"
+        tvTotalDitolak.text = "⊗ $ditolak Ditolak"
     }
 }

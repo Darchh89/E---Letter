@@ -73,6 +73,6 @@ interface EletterApiService {
     @GET("api/student/request/{id}")
     fun getDetailSurat(
         @Header("Authorization") token: String,
-        @Path("id") requestId: Int
+        @Path("id") id: Int
     ): Call<DetailSuratResponse>
 }
