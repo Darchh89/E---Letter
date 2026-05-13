@@ -62,7 +62,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:contentDescription="Notifikasi"
-                        android:src="@drawable/logo_notifikasi" />
+                        android:src="@drawable/logo_notifikasil" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

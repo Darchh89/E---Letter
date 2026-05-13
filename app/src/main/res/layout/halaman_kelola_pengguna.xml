@@ -249,7 +249,7 @@
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="cecec123" android:textColor="@android:color/black" android:textSize="14sp" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" android:orientation="horizontal">
-                        <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="40dp" android:layout_marginEnd="8dp" android:insetTop="0dp" android:insetBottom="0dp" android:text="Edit" android:textAllCaps="false" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" app:backgroundTint="#4064E6" app:cornerRadius="6dp" app:icon="@drawable/icon_edit" app:iconTint="@color/white" app:iconPadding="8dp" />
+
                         <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="40dp" android:insetTop="0dp" android:insetBottom="0dp" android:text="Hapus" android:textAllCaps="false" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" app:backgroundTint="#FF0000" app:cornerRadius="6dp" app:icon="@drawable/icon_sampah_putih" app:iconTint="@color/white" app:iconPadding="8dp" />
                     </LinearLayout>
                 </LinearLayout>
