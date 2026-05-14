@@ -66,7 +66,6 @@
                 android:layout_marginTop="20dp"
                 android:padding="5dp"
                 android:src="@drawable/foto_profil_wanita_guru"
-                app:shapeAppearanceOverlay="@style/CircleImage"
                 android:background="#E0E0E0"/>
 
             <TextView
@@ -204,22 +203,22 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <LinearLayout android:id="@+id/nav_beranda" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_beranda_new" android:alpha="0.4"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Beranda" android:textSize="10sp" android:alpha="0.4"/>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <LinearLayout android:id="@+id/nav_riwayat" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_riwayat_new" android:alpha="0.4"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Riwayat" android:textSize="10sp" android:alpha="0.4"/>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <LinearLayout android:id="@+id/nav_panduan" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_panduan_new" android:alpha="0.4"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Panduan" android:textSize="10sp" android:alpha="0.4"/>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        <LinearLayout android:id="@+id/nav_profil" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_profil_new_biru"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Profil" android:textSize="10sp" android:textColor="#2196F3" android:textStyle="bold"/>
         </LinearLayout>

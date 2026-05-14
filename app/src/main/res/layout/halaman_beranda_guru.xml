@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F4F8"
-    tools:context=".HalamanBerandaGuru">
+    tools:context=".halaman_beranda_guru">
 
     <!-- SCROLLABLE CONTENT -->
     <ScrollView
@@ -62,7 +62,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:contentDescription="Notifikasi"
-                        android:src="@drawable/logo_notifikasil" />
+                        android:src="@drawable/logo_notifikasi" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -769,6 +769,7 @@
         app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
+            android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -776,7 +777,7 @@
 
             <!-- Beranda (Active) -->
             <LinearLayout
-                android:id="@+id/navBeranda"
+                android:id="@+id/nav_beranda"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -802,7 +803,7 @@
 
             <!-- Riwayat -->
             <LinearLayout
-                android:id="@+id/navRiwayat"
+                android:id="@+id/nav_riwayat"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -827,7 +828,7 @@
 
             <!-- Panduan -->
             <LinearLayout
-                android:id="@+id/navPanduan"
+                android:id="@+id/nav_panduan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -852,7 +853,7 @@
 
             <!-- Profil -->
             <LinearLayout
-                android:id="@+id/navProfil"
+                android:id="@+id/nav_profil"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

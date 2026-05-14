@@ -93,7 +93,7 @@ class halaman_masuk_siswa : AppCompatActivity() {
                 startActivity(Intent(this, halaman_beranda_guru::class.java))
                 finish()
                 return@setOnClickListener // Hentikan proses agar tidak memanggil API
-            } else if (email == "admin123" && password == "12345") {
+            } else if (email == "admin123@gmail.com" && password == "12345") { // <--- BAGIAN INI DIUBAH
                 Toast.makeText(this, "Login Admin Berhasil!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, halaman_beranda_admin::class.java))
                 finish()
@@ -127,7 +127,7 @@ class halaman_masuk_siswa : AppCompatActivity() {
                         // Navigasi halaman berdasarkan Role dari server
                         when (userRole) {
                             "student" -> {
-                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_siswa::class.java))
+                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_guru::class.java))
                                 finish()
                             }
                             "teacher" -> {

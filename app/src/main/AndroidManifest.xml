@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".dialog_filter_riwayat_guru"
+            android:exported="false" />
+        <activity
             android:name=".halaman_persetujuan_surat_izin_dispensasi"
             android:exported="false" />
         <activity

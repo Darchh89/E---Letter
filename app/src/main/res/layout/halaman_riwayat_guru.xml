@@ -7,170 +7,444 @@
     android:background="#FAFAFA"
     tools:context=".halaman_riwayat_guru">
 
+    <!-- HEADER / APP BAR -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_logo"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/logo_smk" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Riwayat"
+            android:textColor="#3FA2F6"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btn_notifikasi"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/logo_notifikasi"
+            app:tint="#6B7280" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E7EB"
+        app:layout_constraintTop_toBottomOf="@id/header_layout" />
+
+    <!-- KONTEN UTAMA (SCROLLABLE) -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="100dp"
+        android:paddingBottom="24dp"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@+id/header_shadow">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp">
 
-            <ImageView
-                android:id="@+id/logo_smk"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="24dp"
-                android:src="@drawable/logo_smk"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_riwayat"
-                android:layout_width="wrap_content"
+            <!-- KOTAK BIRU (STATISTIK PERSETUJUAN SURAT) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:text="Riwayat Surat"
-                android:textColor="@android:color/black"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo_smk" />
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#41A3EE"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
 
-            <TextView
-                android:id="@+id/tv_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="4dp"
-                android:text="Daftar riwayat pengajuan surat Anda"
-                android:textColor="#616161"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_riwayat" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="true">
 
+                    <!-- Hiasan Lingkaran -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="-40dp"
+                        android:layout_marginBottom="-40dp"
+                        app:cardBackgroundColor="#26FFFFFF"
+                        app:cardCornerRadius="80dp"
+                        app:cardElevation="0dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Persetujuan Surat"
+                            android:textColor="#E0F2FE"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12 Izin"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                app:cardBackgroundColor="#33FFFFFF"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="10dp"
+                                    android:paddingVertical="6dp"
+                                    android:text="✓ 8 Disetujui"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardBackgroundColor="#33FFFFFF"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="10dp"
+                                    android:paddingVertical="6dp"
+                                    android:text="⊗ 3 Ditolak"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- SEARCH & FILTER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_subtitle">
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <!-- Search Bar -->
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                        <TextView android:id="@+id/title_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#FFF59D" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_1" app:layout_constraintStart_toEndOf="@+id/title_1" app:layout_constraintTop_toTopOf="@+id/title_1">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="12dp" android:paddingVertical="4dp" android:text="Menunggu" android:textColor="#F57F17" android:textSize="10sp" android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:id="@+id/sender_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : PMR" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_1" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 22 Oktober 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_1" />
-                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@android:drawable/ic_menu_search"
+                            app:tint="#9E9E9E" />
+                        <EditText
+                            android:id="@+id/et_cari_surat"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:background="@null"
+                            android:hint="Cari nomor surat"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="#9E9E9E"
+                            android:textSize="14sp" />
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- Tombol Filter -->
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:id="@+id/btn_filter"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                        <TextView android:id="@+id/title_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#FFCDD2" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_2" app:layout_constraintStart_toEndOf="@+id/title_2" app:layout_constraintTop_toTopOf="@+id/title_2">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Ditolak" android:textColor="#C62828" android:textSize="10sp" android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:id="@+id/sender_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : OSIS" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_2" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 20 Juli 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_2" />
-                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E0E0E0"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/icon_filter"
+                            app:tint="#757575" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Filter"
+                            android:textColor="#757575"
+                            android:textSize="8sp" />
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                        <TextView android:id="@+id/title_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_3" app:layout_constraintStart_toEndOf="@+id/title_3" app:layout_constraintTop_toTopOf="@+id/title_3">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:id="@+id/sender_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : Paskibra" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_3" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 13 Agustus 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_3" />
-                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
-                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                        <TextView android:id="@+id/title_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                        <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_4" app:layout_constraintStart_toEndOf="@+id/title_4" app:layout_constraintTop_toTopOf="@+id/title_4">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:id="@+id/sender_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Dari : Kapro" android:textColor="#BDBDBD" android:textSize="10sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_4" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Diajukan : 13 Agustus 2025" android:textColor="@android:color/black" android:textSize="14sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/sender_4" />
-                        <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/tempat_sampah" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
-
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- JUDUL LIST -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Riwayat Persetujuan Surat"
+                android:textColor="#374151"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="16dp"
+                android:text="Tinjau semua persetujuan surat Anda."
+                android:textColor="#9CA3AF"
+                android:textSize="12sp" />
+
+            <!-- ======================= -->
+            <!-- DAFTAR KARTU RIWAYAT    -->
+            <!-- ======================= -->
+
+            <!-- ITEM 1: Izin Keluar -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#F3F4F6"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="44dp" android:layout_height="44dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_keluar" app:tint="#F58220" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Keluar" android:textColor="#1F2937" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 18/10/2023 • SRT-KLR-003" android:textColor="#6B7280" android:textSize="11sp" />
+                    </LinearLayout>
+                    <!-- Icon panah kanan bawaan Android/Chevron -->
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ITEM 2: Izin Masuk -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#F3F4F6"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="44dp" android:layout_height="44dp" app:cardBackgroundColor="#F4E8FB" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_masuk" app:tint="#A464DF" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Masuk" android:textColor="#1F2937" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 12/11/2023 • SRT-MSK-003" android:textColor="#6B7280" android:textSize="11sp" />
+                    </LinearLayout>
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ITEM 3: Izin Keluar -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#F3F4F6"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="44dp" android:layout_height="44dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_keluar" app:tint="#F58220" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Keluar" android:textColor="#1F2937" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 18/10/2023 • SRT-KLR-002" android:textColor="#6B7280" android:textSize="11sp" />
+                    </LinearLayout>
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ITEM 4: Izin Dispensasi (Contoh) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#F3F4F6"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="44dp" android:layout_height="44dp" app:cardBackgroundColor="#EAF4FE" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_dispensasi" app:tint="#41A3EE" />
+                    </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Dispensasi" android:textColor="#1F2937" android:textSize="15sp" android:textStyle="bold" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 15/10/2023 • SRT-DSP-007" android:textColor="#6B7280" android:textSize="11sp" />
+                    </LinearLayout>
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.card.MaterialCardView
+    <!-- BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="-24dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:layout_gravity="top" android:baselineAligned="false" android:orientation="horizontal" android:weightSum="4">
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:elevation="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-            <LinearLayout android:id="@+id/nav_beranda" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_home_abu" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Beranda" android:textColor="#9E9E9E" android:textSize="10sp" />
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/nav_panduan" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_panduan_abu" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Panduan" android:textColor="#9E9E9E" android:textSize="10sp" />
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/nav_riwayat" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_riwayat_biru" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Riwayat" android:textColor="#4299E1" android:textSize="10sp" android:textStyle="bold"/>
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/nav_profil" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/menu_profil_abu" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Profil" android:textColor="#9E9E9E" android:textSize="10sp" />
-            </LinearLayout>
+        <!-- Beranda -->
+        <LinearLayout
+            android:id="@+id/nav_beranda"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_beranda_new"
+                app:tint="#9CA3AF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Beranda"
+                android:textColor="#9CA3AF"
+                android:textSize="10sp" />
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+
+        <!-- Riwayat (Active - Biru) -->
+        <LinearLayout
+            android:id="@+id/nav_riwayat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_riwayat_biru_new"
+                app:tint="#3FA2F6" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Riwayat"
+                android:textColor="#3FA2F6"
+                android:textStyle="bold"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Panduan -->
+        <LinearLayout
+            android:id="@+id/nav_panduan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_panduan_new"
+                app:tint="#9CA3AF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Panduan"
+                android:textColor="#9CA3AF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Profil -->
+        <LinearLayout
+            android:id="@+id/nav_profil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_profil_new"
+                app:tint="#9CA3AF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Profil"
+                android:textColor="#9CA3AF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
