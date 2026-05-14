@@ -150,7 +150,7 @@
             android:name=".halaman_beranda_siswa"
             android:exported="false" />
         <activity
-            android:name=".halaman_masuk_siswa"
+            android:name=".halaman_masuk_user"
             android:exported="false" />
         <activity
             android:name=".halaman_daftar_siswa"

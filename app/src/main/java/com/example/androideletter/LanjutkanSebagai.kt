@@ -13,10 +13,17 @@ class LanjutkanSebagai : AppCompatActivity() {
 
         // Mencari tombol berdasarkan ID di XML
         val btnSiswa = findViewById<MaterialButton>(R.id.btn_siswa)
+        val btnGuru = findViewById<MaterialButton>(R.id.btn_guru)
 
         // Berpindah ke halaman_masuk_siswa saat ditekan
+        btnGuru.setOnClickListener {
+            val intent = Intent(this, halaman_masuk_user::class.java)
+            intent.putExtra("ROLE_SEBELUMNYA", "guru") // Memberi tanda "guru"
+            startActivity(intent)
+        }
         btnSiswa.setOnClickListener {
-            val intent = Intent(this, halaman_masuk_siswa::class.java)
+            val intent = Intent(this, halaman_masuk_user::class.java)
+            intent.putExtra("ROLE_SEBELUMNYA", "siswa") // Memberi tanda "siswa"
             startActivity(intent)
         }
     }

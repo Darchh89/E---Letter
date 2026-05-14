@@ -22,7 +22,7 @@ import retrofit2.Response
 class halaman_detail_surat_izin_masuk : AppCompatActivity() {
 
     // === GANTI INI DENGAN IP LAPTOP ANDA YANG BENAR ===
-    private val serverIp = "10.55.226.99"
+    private val serverIp = "192.168.1.81"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

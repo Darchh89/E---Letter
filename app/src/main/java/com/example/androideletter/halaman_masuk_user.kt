@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class halaman_masuk_siswa : AppCompatActivity() {
+class halaman_masuk_user : AppCompatActivity() {
 
     private var isPasswordVisible = false
 
@@ -119,7 +119,7 @@ class halaman_masuk_siswa : AppCompatActivity() {
                         val userRole = loginResponse?.user?.role
                         val userName = loginResponse?.user?.full_name
 
-                        Toast.makeText(this@halaman_masuk_siswa, "Selamat datang, $userName", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@halaman_masuk_user, "Selamat datang, $userName", Toast.LENGTH_SHORT).show()
 
                         // Simpan sesi user
                         saveUserSession(loginResponse?.token, userRole, userName)
@@ -127,42 +127,54 @@ class halaman_masuk_siswa : AppCompatActivity() {
                         // Navigasi halaman berdasarkan Role dari server
                         when (userRole) {
                             "student" -> {
-                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_guru::class.java))
+                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_siswa::class.java))
                                 finish()
                             }
                             "teacher" -> {
-                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_guru::class.java))
+                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_guru::class.java))
                                 finish()
                             }
                             "admin" -> {
-                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_admin::class.java))
+                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_admin::class.java))
                                 finish()
                             }
                             "kepala_sekolah" -> {
-                                startActivity(Intent(this@halaman_masuk_siswa, halaman_beranda_kepsek::class.java))
+                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_kepsek::class.java))
                                 finish()
                             }
                             else -> {
-                                Toast.makeText(this@halaman_masuk_siswa, "Role tidak dikenali sistem", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@halaman_masuk_user, "Role tidak dikenali sistem", Toast.LENGTH_SHORT).show()
                             }
                         }
                     } else {
                         // Jika server mengembalikan error 401 atau lainnya
-                        Toast.makeText(this@halaman_masuk_siswa, "Email atau Kata Sandi salah", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@halaman_masuk_user, "Email atau Kata Sandi salah", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     btnMasuk.isEnabled = true
                     btnMasuk.text = "Masuk"
-                    Toast.makeText(this@halaman_masuk_siswa, "Gagal koneksi ke server: ${t.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@halaman_masuk_user, "Gagal koneksi ke server: ${t.message}", Toast.LENGTH_LONG).show()
                 }
             })
         }
 
         tvDaftar.setOnClickListener {
-            val intent = Intent(this, halaman_daftar_siswa::class.java)
-            startActivity(intent)
+            // Ambil data kiriman dari halaman sebelumnya
+            val roleAkses = intent.getStringExtra("ROLE_SEBELUMNYA")
+
+            tvDaftar.setOnClickListener {
+                if (roleAkses == "guru") {
+                    // Jika sebelumnya tekan tombol Guru, arahkan ke daftar guru
+                    val intent = Intent(this, halaman_daftar_guru::class.java)
+                    startActivity(intent)
+                } else {
+                    // Jika sebelumnya tekan tombol Siswa (atau default), arahkan ke daftar siswa
+                    val intent = Intent(this, halaman_daftar_siswa::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 

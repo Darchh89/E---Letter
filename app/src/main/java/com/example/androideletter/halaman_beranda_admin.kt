@@ -33,7 +33,7 @@ class halaman_beranda_admin : AppCompatActivity() {
             Toast.makeText(this, "Berhasil Keluar", Toast.LENGTH_SHORT).show()
 
             // Arahkan kembali ke halaman login (sesuaikan nama class login-mu)
-            val intent = Intent(this, halaman_masuk_siswa::class.java)
+            val intent = Intent(this, halaman_masuk_user::class.java)
             // Bersihkan history tumpukan halaman (opsional namun disarankan untuk fitur logout)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

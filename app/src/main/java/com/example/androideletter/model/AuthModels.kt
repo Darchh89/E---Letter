@@ -1,4 +1,4 @@
-package com.example.androideletter.model
+    package com.example.androideletter.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

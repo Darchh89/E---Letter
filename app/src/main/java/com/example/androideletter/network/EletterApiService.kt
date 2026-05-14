@@ -6,9 +6,11 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface EletterApiService {
-
+        // Ubah dari registerStudent menjadi registerUser agar universal
+        // SATU FUNGSI UNTUK SEMUA REGISTRASI (GURU & SISWA)
     @POST("api/auth/register")
-    fun registerStudent(@Body request: RegisterRequest): Call<AuthResponse>
+    fun registerUser(
+    @Body request: RegisterRequest): Call<GeneralResponse> // Konsisten menggunakan GeneralResponse
 
     @POST("api/auth/login")
     fun loginUser(@Body request: LoginRequest): Call<LoginResponse>
