@@ -21,6 +21,15 @@
             android:name=".halaman_persetujuan_surat_kepala_sekolah"
             android:exported="false" />
         <activity
+            android:name=".halaman_daftar_surat_izin_keluar_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_detail_surat_dispensasi"
+            android:exported="false" />
+        <activity
             android:name=".dialog_filter_riwayat_guru"
             android:exported="false" />
         <activity
