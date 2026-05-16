@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Edit Profil"
-            android:textColor="#3B92EB"
+            android:textColor="#3BA4E3"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center"
-                            app:cardBackgroundColor="#3B92EB"
+                            app:cardBackgroundColor="#3BA4E3"
                             app:cardCornerRadius="14dp"
                             app:cardElevation="0dp"
                             app:strokeWidth="0dp">
@@ -208,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Judul Keterangan"
+                android:text="Nama"
                 android:textColor="#4B5563"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -348,122 +348,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Peran Tambahan"
-                android:textColor="#4B5563"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="#F0F8FF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#46A5E5"
-                    app:strokeWidth="1dp">
-
-                    <CheckBox
-                        android:id="@+id/cbKepalaProgram"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:buttonTint="#46A5E5"
-                        android:checked="true"
-                        android:paddingStart="8dp"
-                        android:text="Kepala Program"
-                        android:textColor="#4B5563"
-                        android:textSize="12sp" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp">
-
-                    <CheckBox
-                        android:id="@+id/cbGuruMapel"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:buttonTint="#D1D5DB"
-                        android:paddingStart="8dp"
-                        android:text="Guru Mapel"
-                        android:textColor="#4B5563"
-                        android:textSize="12sp" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="#F0F8FF"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#46A5E5"
-                    app:strokeWidth="1dp">
-
-                    <CheckBox
-                        android:id="@+id/cbWaliKelas"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:buttonTint="#46A5E5"
-                        android:checked="true"
-                        android:paddingStart="8dp"
-                        android:text="Wali Kelas"
-                        android:textColor="#4B5563"
-                        android:textSize="12sp" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#D1D5DB"
-                    app:strokeWidth="1dp">
-
-                    <CheckBox
-                        android:id="@+id/cbTatib"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:buttonTint="#D1D5DB"
-                        android:paddingStart="8dp"
-                        android:text="Tatib"
-                        android:textColor="#4B5563"
-                        android:textSize="12sp" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Wali Kelas Dari"
+                android:text="Peran"
                 android:textColor="#4B5563"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -472,55 +357,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="#F0F8FF"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#D1D5DB"
+                app:strokeColor="#74B9FF"
                 app:strokeWidth="1dp">
 
                 <TextView
-                    android:id="@+id/tvPilihWaliKelas"
+                    android:id="@+id/tvPeran"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="16dp"
-                    android:text="-- Pilih --"
-                    android:textColor="#9CA3AF"
-                    android:textSize="13sp"
-                    app:drawableEndCompat="@android:drawable/arrow_down_float"
-                    app:drawableTint="#9CA3AF" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Kepala Program"
-                android:textColor="#4B5563"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#D1D5DB"
-                app:strokeWidth="1dp">
-
-                <TextView
-                    android:id="@+id/tvPilihKepalaProgram"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingHorizontal="16dp"
-                    android:text="-- Pilih --"
-                    android:textColor="#9CA3AF"
-                    android:textSize="13sp"
-                    app:drawableEndCompat="@android:drawable/arrow_down_float"
-                    app:drawableTint="#9CA3AF" />
+                    android:text="Kepala Sekolah"
+                    android:textColor="#4B5563"
+                    android:textSize="13sp" />
             </com.google.android.material.card.MaterialCardView>
 
             <View

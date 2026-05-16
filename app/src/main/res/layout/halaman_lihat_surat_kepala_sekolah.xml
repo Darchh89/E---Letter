@@ -22,7 +22,7 @@
             android:id="@+id/btn_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/icon_kembali_biru    " />
+            android:src="@drawable/icon_kembali_biru" />
 
         <TextView
             android:layout_width="0dp"

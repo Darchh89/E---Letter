@@ -15,6 +15,45 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".halaman_riwayat_persetujuan_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_panduan_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_profil_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_edit_profil_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".dialog_filter_persetujuan_surat"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_persetujuan_surat_izin_keluar"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_persetujuan_surat_izin_masuk"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_persetujuan_surat_izin_masuk"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_pengajuan_data_siswa_dispensasi"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_pengajuan_kegiatan_dispensasi"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_dispensasi_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_izin_masuk_kepala_sekolah"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_izin_keluar_kepala_sekolah"
+            android:exported="false" />
+        <activity
             android:name=".item_surat_dispensasi"
             android:exported="false" />
         <activity
@@ -27,19 +66,16 @@
             android:name=".halaman_lihat_surat_kepala_sekolah"
             android:exported="false" />
         <activity
-            android:name=".halaman_detail_surat_dispensasi"
+            android:name=".halaman_persetujuan_surat_dispensasi"
             android:exported="false" />
         <activity
             android:name=".dialog_filter_riwayat_guru"
             android:exported="false" />
         <activity
-            android:name=".halaman_persetujuan_surat_izin_dispensasi"
+            android:name=".halaman_detail_surat_izin_dispensasi"
             android:exported="false" />
         <activity
             android:name=".halaman_persetujuan_surat_izin_keluar"
-            android:exported="false" />
-        <activity
-            android:name=".detail_surat_izin_dispensasi"
             android:exported="false" />
         <activity
             android:name=".dialog_surat_berhasil_dispensasi"

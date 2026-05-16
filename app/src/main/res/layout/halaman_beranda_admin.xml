@@ -135,7 +135,7 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_gradien_biru"
+                            android:background="@drawable/bg_gradient_biru"
                             android:padding="12dp">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Surat" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="3" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />
@@ -187,7 +187,7 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_gradien_oren"
+                            android:background="@drawable/bg_gradient_oren"
                             android:padding="12dp">
                             <TextView android:id="@+id/title_tunggu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Menunggu" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
                             <TextView android:id="@+id/angka_tunggu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/title_tunggu" android:text="8" android:textColor="@color/white" android:textSize="28sp" android:textStyle="bold" />

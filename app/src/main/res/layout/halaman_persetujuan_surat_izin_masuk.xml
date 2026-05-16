@@ -77,7 +77,7 @@
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:cardBackgroundColor="#FFF0E5"
+                            app:cardBackgroundColor="#F4E8FF"
                             app:cardCornerRadius="12dp"
                             app:strokeWidth="0dp">
 
@@ -87,7 +87,7 @@
                                 android:paddingHorizontal="10dp"
                                 android:paddingVertical="4dp"
                                 android:text="Informasi Siswa"
-                                android:textColor="#F17834"
+                                android:textColor="#8550E0"
                                 android:textSize="10sp"
                                 android:textStyle="bold" />
                         </com.google.android.material.card.MaterialCardView>
@@ -120,7 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Detail Surat Izin\nKeluar"
+                        android:text="Detail Surat Izin\nMasuk"
                         android:textColor="#2D3142"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -138,7 +138,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        app:cardBackgroundColor="#FFF3EC"
+                        app:cardBackgroundColor="#F7F0FF"
                         app:cardCornerRadius="8dp"
                         app:strokeWidth="0dp">
 
@@ -152,7 +152,7 @@
                             <ImageView
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:background="@drawable/icon_user_oren" />
+                                android:background="@drawable/icon_user_ungu" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -206,7 +206,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="10.00 - 12.00"
+                        android:text="07.00 - 07.30"
                         android:textColor="#2D3142"
                         android:textSize="13sp" />
 
@@ -214,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        app:cardBackgroundColor="#FFF3EC"
+                        app:cardBackgroundColor="#F7F0FF"
                         app:cardCornerRadius="8dp"
                         app:strokeWidth="0dp">
 
@@ -237,7 +237,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:lineSpacingExtra="4dp"
-                                android:text="saya mengajukan izin untuk pulang lebih awal hari ini dikarenakan adanya keperluan keluarga mengharuskan bepergian ke luar kota. Saya memohon izin untuk meninggalkan pembelajaran sebelum waktu selesai."
+                                android:text="saya mengajukan izin masuk sekolah karena mengalami keterlambatan akibat ban kendaraan saya bocor saat dalam perjalanan ke sekolah. Saya memohon izin untuk tetap mengikuti kegiatan pembelajaran."
                                 android:textColor="#2D3142"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -271,7 +271,7 @@
                         <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:src="@drawable/icon_tanggal_oren" />
+                            android:src="@drawable/icon_tanggal_ungu" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -295,7 +295,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="#SRT-KLR-001"
+                        android:text="#SRT-MSK-001"
                         android:textColor="#2D3142"
                         android:textSize="13sp" />
 
@@ -484,7 +484,7 @@
                     android:id="@+id/cbPersetujuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:buttonTint="#FFA24C"
+                    android:buttonTint="#C2A3F6"
                     android:paddingStart="8dp"
                     android:text="Saya telah membaca dan memeriksa dokumen"
                     android:textColor="#6B7280"
@@ -501,7 +501,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                app:backgroundTint="#FFA24C"
+                app:backgroundTint="#B582F2"
                 app:cornerRadius="8dp"
                 app:strokeWidth="0dp" />
 

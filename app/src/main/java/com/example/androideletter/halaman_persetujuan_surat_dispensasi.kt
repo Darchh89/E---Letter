@@ -17,11 +17,11 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
-class halaman_detail_surat_dispensasi : AppCompatActivity() {
+class halaman_persetujuan_surat_dispensasi : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.halaman_detail_surat_dispensasi)
+        setContentView(R.layout.halaman_persetujuan_surat_dispensasi)
 
         // Hilangkan Navbar Bawaan HP
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)

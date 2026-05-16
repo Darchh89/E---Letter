@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
-    tools:context=".halaman_detail_surat_dispensasi">
+    tools:context=".halaman_persetujuan_surat_dispensasi">
 
     <LinearLayout
         android:id="@+id/header_layout"
@@ -420,7 +420,7 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/icon_tgl_biru" />
+                            android:src="@drawable/icon_tanggal_biru" />
 
                         <TextView
                             android:layout_width="wrap_content"
