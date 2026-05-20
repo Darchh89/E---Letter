@@ -1,9 +1,41 @@
     package com.example.androideletter.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+    //=================  //  =================//
 
+    data class UpdateProfileRequest(
+        val full_name: String,
+        val nisn: String,         // Backend pakai "nisn"
+        val email: String,        // Tambahan Email
+        val phone_number: String, // Tambahan Telepon
+        val class_id: Int?
+    )
+
+
+    data class SignatureRequest(
+        val signatureDataUrl: String
+    )
+
+    data class ClassResponse(
+        @SerializedName("id") val id: Int,
+        @SerializedName("className") val className: String
+    ) {
+        // FUNGSI WAJIB: Agar Spinner menampilkan teks className, bukan kode aneh (seperti com.example.model@1234)
+        override fun toString(): String {
+            return className
+        }
+    }
+
+    // 2. Model Wrapper (pembungkus) sesuai dengan format response.go di backend
+    data class MasterDataResponse(
+        @SerializedName("success") val success: Boolean,
+        @SerializedName("message") val message: String?,
+        @SerializedName("data") val data: List<ClassResponse>?
+    )
+    //================= BARU =================//
 // Data yang diterima dari server
 data class AuthResponse(
     val message: String,
@@ -24,13 +56,7 @@ data class StudentProfileResponse(
     val total_izin_keluar: Int?
 )
 
-// Model untuk mengirim request PUT Edit Profil
-data class UpdateProfileRequest(
-    val full_name: String,
-    val student_code: String,
-    val gender: String,
-    val class_id: Int?
-)
+
 // Model untuk response umum yang hanya berisi pesan
 data class GeneralResponse(
     val message: String
@@ -42,15 +68,15 @@ data class SignatureResponse(
     val signature_url: String?
 )
 
-data class DepartmentResponse(
-    val id: Int,
-    val name: String
-) {
-    // TAMBAHAN: Agar di Spinner yang muncul adalah namanya, bukan kode objek
-    override fun toString(): String {
-        return name
+    data class DepartmentResponse(
+        @SerializedName("id") val id: Int,
+        @SerializedName("className") val name: String? // Mengambil "className" dari JSON backend
+    ) {
+        // Agar di Spinner yang muncul adalah namanya, bukan kode objek
+        override fun toString(): String {
+            return name ?: "Kelas Tidak Diketahui"
+        }
     }
-}
 data class SuratIzinMasukRequest(
     val title: String,
     val department_id: Int,

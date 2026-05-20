@@ -40,6 +40,7 @@ class halaman_profil_siswa : AppCompatActivity() {
         // View tambahan untuk statistik surat
         val tvTotalMasuk = findViewById<TextView>(R.id.tv_total_izin_masuk)
         val tvTotalKeluar = findViewById<TextView>(R.id.tv_total_izin_keluar)
+        val btnKeluar = findViewById<LinearLayout>(R.id.btn_keluar)
 
         // Panggil fungsi untuk mengambil data dari server (tambahkan parameter ivFotoProfil)
 
@@ -52,6 +53,31 @@ class halaman_profil_siswa : AppCompatActivity() {
             val intent = Intent(this, halaman_edit_profil_siswa::class.java)
             startActivity(intent)
         }
+
+        // ==========================================
+        // LOGIKA TOMBOL KELUAR (LOGOUT)
+        // ==========================================
+        btnKeluar.setOnClickListener {
+            // 1. Hapus semua sesi dari SharedPreferences
+            val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.clear() // Menghapus token dan semua data user
+            editor.apply()
+
+            // 2. Beri notifikasi bahwa logout berhasil
+            Toast.makeText(this, "Berhasil Keluar", Toast.LENGTH_SHORT).show()
+
+            // 3. Arahkan kembali ke halaman awal (LanjutkanSebagai)
+            val intent = Intent(this, LanjutkanSebagai::class.java)
+
+            // 4. Bersihkan Back Stack agar tidak bisa di-back setelah logout
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+            finish()
+        }
+        // ==========================================
+
 
         // ==========================================
         // DEKLARASI NAVIGASI BAWAH
@@ -132,5 +158,7 @@ class halaman_profil_siswa : AppCompatActivity() {
                 Toast.makeText(this@halaman_profil_siswa, "Koneksi bermasalah: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+
+
     }
 }

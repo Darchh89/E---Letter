@@ -15,29 +15,31 @@ interface EletterApiService {
     fun registerUser(@Body request: RegisterRequest): Call<RegisterResponse>
 
     // --- PROFILE ---
-    @GET("api/student/profile")
+    @GET("user/profile")
     fun getStudentProfile(
         @Header("Authorization") token: String
     ): Call<StudentProfileResponse>
 
-    @PUT("api/student/profile")
+    // POST /api/v1/user/update (Backend pakai POST, bukan PUT)
+    @POST("user/update")
     fun updateStudentProfile(
         @Header("Authorization") token: String,
         @Body request: UpdateProfileRequest
     ): Call<GeneralResponse>
 
-    @Multipart
-    @POST("api/student/signature")
+    // POST /api/v1/user/signature (Backend menerima JSON string SVG, bukan File Multipart)
+    @POST("user/signature")
     fun uploadSignature(
         @Header("Authorization") token: String,
-        @Part signature: MultipartBody.Part
+        @Body request: SignatureRequest // <- Pakai SignatureRequest, bukan MultipartBody.Part
     ): Call<SignatureResponse>
 
     // --- DATA & SURAT ---
-    @GET("api/classes")
+// Ganti getClasses yang lama menjadi ini:
+    @GET("classes")
     fun getClasses(
         @Header("Authorization") token: String
-    ): Call<List<DepartmentResponse>>
+    ): Call<MasterDataResponse>
 
     @GET("api/student/history")
     fun getHistorySurat(
