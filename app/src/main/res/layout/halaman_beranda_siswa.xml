@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="20dp">
+            android:paddingTop="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#E5E7EB"
                     app:strokeWidth="1dp">
@@ -89,7 +89,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="18dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -99,10 +100,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="12dp"
                             android:text="34"
                             android:textColor="#374151"
-                            android:textSize="22sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -113,7 +114,7 @@
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#E5E7EB"
                     app:strokeWidth="1dp">
@@ -121,7 +122,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="18dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -131,14 +133,14 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
+                            android:layout_marginTop="12dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:text="6"
                                 android:textColor="#374151"
-                                android:textSize="22sp"
+                                android:textSize="24sp"
                                 android:textStyle="bold" />
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
@@ -146,12 +148,12 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 app:cardBackgroundColor="#EFF6FF"
-                                app:cardCornerRadius="8dp"
+                                app:cardCornerRadius="10dp"
                                 app:cardElevation="0dp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:paddingHorizontal="8dp"
+                                    android:paddingHorizontal="10dp"
                                     android:paddingVertical="4dp"
                                     android:text="2 Baru"
                                     android:textColor="#3B82F6"
@@ -176,7 +178,7 @@
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#E5E7EB"
                     app:strokeWidth="1dp">
@@ -184,7 +186,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="18dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -194,10 +197,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="12dp"
                             android:text="18"
                             android:textColor="#374151"
-                            android:textSize="22sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -208,7 +211,7 @@
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="8dp"
                     app:cardElevation="0dp"
                     app:strokeColor="#E5E7EB"
                     app:strokeWidth="1dp">
@@ -216,7 +219,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="18dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -226,14 +230,14 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
+                            android:layout_marginTop="12dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:text="10"
                                 android:textColor="#374151"
-                                android:textSize="22sp"
+                                android:textSize="24sp"
                                 android:textStyle="bold" />
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="wrap_content"
@@ -241,12 +245,12 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerVertical="true"
                                 app:cardBackgroundColor="#FFF7ED"
-                                app:cardCornerRadius="8dp"
+                                app:cardCornerRadius="10dp"
                                 app:cardElevation="0dp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:paddingHorizontal="8dp"
+                                    android:paddingHorizontal="10dp"
                                     android:paddingVertical="4dp"
                                     android:text="2 Baru"
                                     android:textColor="#F97316"
@@ -259,11 +263,11 @@
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_lihat_surat"
+                android:id="@+id/card_lihat_surat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
@@ -339,7 +343,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btn_buat_izin_masuk"
+                    android:id="@+id/card_izin_masuk"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
@@ -353,18 +357,19 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_gradient_ungu"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="20dp">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_marginBottom="12dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="16dp"
                             app:cardBackgroundColor="@color/white"
-                            app:cardCornerRadius="18dp"
+                            app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
                             <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/icon_surat_izin_masuk"
                                 app:tint="#A464DF" />
@@ -375,7 +380,7 @@
                             android:layout_height="wrap_content"
                             android:text="Surat Izin Masuk"
                             android:textColor="@color/white"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
@@ -389,7 +394,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btn_buat_izin_keluar"
+                    android:id="@+id/card_izin_keluar"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
@@ -403,18 +408,19 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_gradient_oren"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="20dp">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_marginBottom="12dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="16dp"
                             app:cardBackgroundColor="@color/white"
-                            app:cardCornerRadius="18dp"
+                            app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
                             <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/icon_surat_izin_keluar"
                                 app:tint="#F58220" />
@@ -425,7 +431,7 @@
                             android:layout_height="wrap_content"
                             android:text="Surat Izin Keluar"
                             android:textColor="@color/white"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
@@ -469,12 +475,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#E5E7EB"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="8dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_keluar" app:tint="#F58220" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
@@ -493,12 +499,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#E5E7EB"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#FEF1E6" app:cardCornerRadius="8dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_keluar" app:tint="#F58220" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
@@ -517,12 +523,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="8dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#E5E7EB"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#F4E8FB" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#F4E8FB" app:cardCornerRadius="8dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_masuk" app:tint="#A464DF" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
@@ -632,7 +638,6 @@
                 android:textColor="#9CA3AF"
                 android:textSize="10sp" />
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

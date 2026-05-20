@@ -70,91 +70,74 @@ class halaman_masuk_user : AppCompatActivity() {
         }
 
         // =======================================================
-        // LOGIKA LOGIN MENGGUNAKAN API RETROFIT & HARDCODE BYPASS
+        // LOGIKA LOGIN MENGGUNAKAN API RETROFIT
         // =======================================================
         btnMasuk.setOnClickListener {
-            val email = etId.text.toString().trim()
-            val password = etPassword.text.toString().trim()
+            val inputId = etId.text.toString().trim()
+            val inputPassword = etPassword.text.toString().trim()
 
-            // Validasi Input Kosong
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Harap isi Email/ID dan Kata Sandi", Toast.LENGTH_SHORT).show()
+            if (inputId.isEmpty()) {
+                etId.error = "ID/Email tidak boleh kosong"
                 return@setOnClickListener
             }
-
-            // --- TAMBAHAN LOGIKA JALAN PINTAS (HARDCODE) ---
-            if (email == "123" && password == "12345") {
-                Toast.makeText(this, "Login Siswa Berhasil!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, halaman_beranda_siswa::class.java))
-                finish()
-                return@setOnClickListener // Hentikan proses agar tidak memanggil API
-            } else if (email == "G123" && password == "12345") {
-                Toast.makeText(this, "Login Guru Berhasil!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, halaman_beranda_guru::class.java))
-                finish()
-                return@setOnClickListener // Hentikan proses agar tidak memanggil API
-            } else if (email == "admin123@gmail.com" && password == "12345") { // <--- BAGIAN INI DIUBAH
-                Toast.makeText(this, "Login Admin Berhasil!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, halaman_beranda_admin::class.java))
-                finish()
-                return@setOnClickListener // Hentikan proses agar tidak memanggil API
+            if (inputPassword.isEmpty()) {
+                etPassword.error = "Kata sandi tidak boleh kosong"
+                return@setOnClickListener
             }
-            // -----------------------------------------------
 
             // Ubah tampilan tombol saat proses API
             btnMasuk.isEnabled = false
             btnMasuk.text = "Memproses..."
 
             // Buat request body untuk API Retrofit
-            val request = LoginRequest(email, password)
+            val request = LoginRequest(inputId, inputPassword)
 
             RetrofitClient.instance.loginUser(request).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    // Kembalikan status tombol
+                    // KEMBALIKAN STATE TOMBOL
                     btnMasuk.isEnabled = true
-                    btnMasuk.text = "Masuk"
+                    btnMasuk.text = "MASUK"
 
-                    if (response.isSuccessful) {
-                        val loginResponse = response.body()
-                        val userRole = loginResponse?.user?.role
-                        val userName = loginResponse?.user?.full_name
+                    val responseBody: LoginResponse? = response.body()
 
-                        Toast.makeText(this@halaman_masuk_user, "Selamat datang, $userName", Toast.LENGTH_SHORT).show()
+                    if (response.isSuccessful && responseBody != null && responseBody.success) {
 
-                        // Simpan sesi user
-                        saveUserSession(loginResponse?.token, userRole, userName)
+                        // 1. Ambil data secara bertahap dari response
+                        val data = responseBody.data
+                        val user = data?.user
 
-                        // Navigasi halaman berdasarkan Role dari server
-                        when (userRole) {
-                            "student" -> {
-                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_siswa::class.java))
-                                finish()
-                            }
-                            "teacher" -> {
-                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_guru::class.java))
-                                finish()
-                            }
-                            "admin" -> {
-                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_admin::class.java))
-                                finish()
-                            }
-                            "kepala_sekolah" -> {
-                                startActivity(Intent(this@halaman_masuk_user, halaman_beranda_kepsek::class.java))
-                                finish()
-                            }
-                            else -> {
-                                Toast.makeText(this@halaman_masuk_user, "Role tidak dikenali sistem", Toast.LENGTH_SHORT).show()
-                            }
+                        val roleDariBackend: String? = user?.role
+                        val namaLengkap: String? = user?.fullName
+                        val jwtToken: String? = data?.accessToken
+
+                        // 2. Simpan JWT Token dan Data User ke SharedPreferences (Gunakan penulisan camelCase yang presisi)
+                        if (jwtToken != null && roleDariBackend != null && namaLengkap != null) {
+                            saveUserSession(jwtToken, roleDariBackend, namaLengkap)
                         }
+
+                        Toast.makeText(this@halaman_masuk_user, "Login Berhasil: $namaLengkap", Toast.LENGTH_SHORT).show()
+
+                        // 3. Pindah halaman spesifik berdasarkan role dari backend
+                        val intentBeranda = when (roleDariBackend) {
+                            "student" -> Intent(this@halaman_masuk_user, halaman_beranda_siswa::class.java)
+                            "teacher" -> Intent(this@halaman_masuk_user, halaman_beranda_guru::class.java)
+                            "admin" -> Intent(this@halaman_masuk_user, halaman_beranda_admin::class.java)
+                            "kepala_sekolah" -> Intent(this@halaman_masuk_user, halaman_beranda_kepsek::class.java)
+                            else -> Intent(this@halaman_masuk_user, halaman_beranda_siswa::class.java)
+                        }
+
+                        startActivity(intentBeranda)
+                        finish()
                     } else {
-                        // Jika server mengembalikan error 401 atau lainnya
-                        Toast.makeText(this@halaman_masuk_user, "Email atau Kata Sandi salah", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@halaman_masuk_user, "Login Gagal: ID atau Sandi Salah", Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    // KEMBALIKAN STATE TOMBOL JIKA KONEKSI GAGAL
                     btnMasuk.isEnabled = true
-                    btnMasuk.text = "Masuk"
+                    btnMasuk.text = "MASUK"
+
                     Toast.makeText(this@halaman_masuk_user, "Gagal koneksi ke server: ${t.message}", Toast.LENGTH_LONG).show()
                 }
             })
@@ -164,21 +147,17 @@ class halaman_masuk_user : AppCompatActivity() {
             // Ambil data kiriman dari halaman sebelumnya
             val roleAkses = intent.getStringExtra("ROLE_SEBELUMNYA")
 
-            tvDaftar.setOnClickListener {
-                if (roleAkses == "guru") {
-                    // Jika sebelumnya tekan tombol Guru, arahkan ke daftar guru
-                    val intent = Intent(this, halaman_daftar_guru::class.java)
-                    startActivity(intent)
-                } else {
-                    // Jika sebelumnya tekan tombol Siswa (atau default), arahkan ke daftar siswa
-                    val intent = Intent(this, halaman_daftar_siswa::class.java)
-                    startActivity(intent)
-                }
+            if (roleAkses == "guru") {
+                val intent = Intent(this, halaman_daftar_guru::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, halaman_daftar_siswa::class.java)
+                startActivity(intent)
             }
         }
     }
 
-    // Fungsi kecil untuk menyimpan Token dan Data User (SharedPreferences)
+    // Fungsi untuk menyimpan Token dan Data User ke SharedPreferences
     private fun saveUserSession(token: String?, role: String?, name: String?) {
         val sharedPref = getSharedPreferences("AppSession", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()

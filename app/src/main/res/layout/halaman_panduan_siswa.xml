@@ -7,7 +7,6 @@
     android:background="#FAFAFA"
     tools:context=".halaman_panduan_siswa">
 
-    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -20,8 +19,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/logo_smk" />
 
         <TextView
@@ -31,14 +30,14 @@
             android:layout_weight="1"
             android:text="Panduan"
             android:textColor="#3FA2F6"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="wrap_content"
             android:src="@drawable/logo_notifikasi"
-            app:tint="#424242" />
+            app:tint="#6B7280" />
     </LinearLayout>
 
     <ScrollView
@@ -57,319 +56,478 @@
             android:paddingHorizontal="24dp"
             android:paddingTop="24dp">
 
-            <!-- BANNER PUSAT PANDUAN -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="#4299E1"
+                app:cardBackgroundColor="#4AA8F8"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_height="match_parent"
+                    android:clipChildren="true">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pusat Panduan"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="-40dp"
+                        android:layout_marginBottom="-40dp"
+                        app:cardBackgroundColor="#26FFFFFF"
+                        app:cardCornerRadius="80dp"
+                        app:cardElevation="0dp" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Pelajari cara mudah mengelola perizinan\nsekolah Anda secara digital."
-                        android:textColor="#EBF8FF"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="20dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pusat Panduan"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Pelajari cara mudah mengelola perizinan\nsekolah anda secara digital."
+                            android:textColor="#E0F2FE"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="4dp" />
+                    </LinearLayout>
+                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- JUDUL SEGMEN -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Panduan Membuat Surat"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textColor="#1F2937"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginBottom="16dp"
                 android:text="Cara mudah membuat surat izin dengan benar"
-                android:textColor="#757575"
+                android:textColor="#6B7280"
                 android:textSize="12sp" />
 
-            <!-- ==================================== -->
-            <!-- ACCORDION 1: SURAT DISPENSASI (BIRU) -->
-            <!-- ==================================== -->
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/header_dispensasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    app:cardBackgroundColor="#4299E1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="16dp">
-                        <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_gravity="center" android:src="@drawable/icon_surat_dispensasi" app:tint="#4299E1" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_weight="1" android:text="Surat Dispensasi" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
-                        <!-- Diasumsikan icon panah menghadap atas, jadi di-rotate 180 untuk menghadap bawah -->
-                        <ImageView android:id="@+id/arrow_dispensasi" android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/icon_panah_atas_putih" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- KONTEN DISPENSASI -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/content_dispensasi"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#4299E1"
-                    app:strokeWidth="1dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    android:orientation="vertical"
+                    android:padding="4dp">
 
-                        <!-- Step 1 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#4299E1" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/header_dispensasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradient_biru"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="16dp">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_surat_dispensasi"
+                                    app:tint="#4AA8F8" />
                             </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hubungi Guru atau Pembina" android:textColor="#4299E1" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Hubungi guru atau pembina ekstrakurikuler yang berkaitan dengan kegiatan tersebut." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
 
-                        <!-- Step 2 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#4299E1" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sampaikan Keperluannya" android:textColor="#4299E1" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Jelaskan alasan dispensasi, tanggal kegiatan, waktu izin, serta daftar siswa yang mengikuti." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:text="Surat Dispensasi"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
-                        <!-- Step 3 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#4299E1" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tunggu Surat yang Dibuat" android:textColor="#4299E1" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Guru atau pembina akan membuatkan surat dispensasi melalui aplikasi." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
+                            <ImageView
+                                android:id="@+id/arrow_dispensasi"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:rotation="180"
+                                android:src="@drawable/icon_panah_atas_putih" />
                         </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                        <!-- Step 4 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#4299E1" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="4" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Terima Surat" android:textColor="#4299E1" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Setelah selesai, siswa dapat melihat surat lalu menunjukkannya kepada guru terkait." android:textColor="#616161" android:textSize="12sp" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/content_dispensasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#4AA8F8"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#7DB4EB" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="1" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#DBEAFE" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hubungi Guru atau Pembina" android:textColor="#2563EB" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Hubungi guru atau pembina ekstrakurikuler yang berkaitan dengan kegiatan tersebut." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
 
-            <!-- ==================================== -->
-            <!-- ACCORDION 2: SURAT IZIN MASUK (UNGU) -->
-            <!-- ==================================== -->
-            <LinearLayout
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#7DB4EB" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="2" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#DBEAFE" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sampaikan Keperluannya" android:textColor="#2563EB" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Jelaskan alasan dispensasi, tanggal kegiatan, waktu izin, serta daftar siswa yang mengikuti." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#7DB4EB" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="3" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#DBEAFE" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tunggu Surat yang Dibuat" android:textColor="#2563EB" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Guru atau pembina akan membuatkan surat dispensasi melalui aplikasi." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#7DB4EB" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="4" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Terima Surat" android:textColor="#2563EB" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Setelah selesai, siswa dapat melihat surat lalu menunjukkannya kepada guru terkait." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/header_masuk"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    app:cardBackgroundColor="#A855F7"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="16dp">
-                        <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_masuk" app:tint="#A855F7" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_weight="1" android:text="Surat Izin Masuk" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
-                        <ImageView android:id="@+id/arrow_masuk" android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/icon_panah_atas_putih" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- KONTEN MASUK -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/content_masuk"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#A855F7"
-                    app:strokeWidth="1dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <!-- Step 1 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#A855F7" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/header_masuk"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradient_ungu"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="16dp">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_surat_izin_masuk"
+                                    app:tint="#A464DF" />
                             </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Isi Form Surat" android:textColor="#A855F7" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Masukkan nama, kelas, jurusan serta keterangan atau alasan mengapa izin masuk sekolah." android:textColor="#616161" android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:text="Surat Izin Masuk"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/arrow_masuk"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:rotation="180"
+                                android:src="@drawable/icon_panah_atas_putih" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/content_masuk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#A855F7"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#C084FC" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="1" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#F3E8FF" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Isi Form Surat" android:textColor="#9333EA" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Masukkan nama, kelas, jurusan serta keterangan atau alasan mengapa izin masuk sekolah." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#C084FC" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="2" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#F3E8FF" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Periksa Kembali Data" android:textColor="#9333EA" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pastikan semua data yang diisi sudah benar dan sesuai." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#C084FC" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="3" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#F3E8FF" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanda Tangan" android:textColor="#9333EA" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Ajukan dan minta tanda tangan petugas tata tertib (Tatib)." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#C084FC" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="4" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Serahkan Surat" android:textColor="#9333EA" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Perlihatkan hasil surat kepada guru piket atau guru mapel yang bersangkutan sebelum masuk kelas." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                        <!-- Step 2 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#A855F7" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Periksa Kembali Data" android:textColor="#A855F7" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pastikan semua data yang diisi sudah benar dan sesuai." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
 
-                        <!-- Step 3 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#A855F7" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanda Tangan" android:textColor="#A855F7" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Ajukan dan minta tanda tangan petugas tata tertib (Tatib)." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <!-- Step 4 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#A855F7" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="4" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Serahkan Surat" android:textColor="#A855F7" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Perlihatkan hasil surat kepada guru piket atau guru mapel yang bersangkutan sebelum masuk kelas." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ===================================== -->
-            <!-- ACCORDION 3: SURAT IZIN KELUAR (ORANYE)-->
-            <!-- ===================================== -->
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/header_keluar"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    app:cardBackgroundColor="#F97316"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:paddingHorizontal="16dp">
-                        <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-                            <!-- Jika icon sama dengan izin masuk, cukup ganti tint nya -->
-                            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_gravity="center" android:src="@drawable/icon_surat_izin_keluar" app:tint="#F97316" />
-                        </com.google.android.material.card.MaterialCardView>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_weight="1" android:text="Surat Izin Keluar" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
-                        <ImageView android:id="@+id/arrow_keluar" android:layout_width="20dp" android:layout_height="20dp" android:rotation="180" android:src="@drawable/icon_panah_atas_putih" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- KONTEN KELUAR -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/content_keluar"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="#F97316"
-                    app:strokeWidth="1dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-                        <!-- Step 1 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#F97316" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Isi Form Surat" android:textColor="#F97316" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Masukkan nama, kelas, jurusan serta keterangan atau alasan mengapa izin keluar sekolah." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
+                    android:orientation="vertical"
+                    android:padding="4dp">
 
-                        <!-- Step 2 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#F97316" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Periksa Kembali Data" android:textColor="#F97316" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pastikan alasan yang ditulis jelas dan dapat dipertanggungjawabkan." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/header_keluar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
 
-                        <!-- Step 3 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#F97316" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                            </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanda Tangan" android:textColor="#F97316" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Ajukan dan minta tanda tangan petugas tata tertib (Tatib)." android:textColor="#616161" android:textSize="12sp" />
-                            </LinearLayout>
-                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradient_oren"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="16dp">
 
-                        <!-- Step 4 -->
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                            <com.google.android.material.card.MaterialCardView android:layout_width="24dp" android:layout_height="24dp" app:cardBackgroundColor="#F97316" app:cardCornerRadius="12dp" app:cardElevation="0dp">
-                                <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="4" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_surat_izin_keluar"
+                                    app:tint="#F97316" />
                             </com.google.android.material.card.MaterialCardView>
-                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:orientation="vertical">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Serahkan Surat" android:textColor="#F97316" android:textSize="14sp" android:textStyle="bold" />
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Perlihatkan hasil surat kepada guru piket atau guru mapel yang bersangkutan untuk mendapatkan izin keluar." android:textColor="#616161" android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:text="Surat Izin Keluar"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/arrow_keluar"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:rotation="180"
+                                android:src="@drawable/icon_panah_atas_putih" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/content_keluar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#F97316"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp">
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#FB923C" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="1" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#FFEDD5" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Isi Form Surat" android:textColor="#EA580C" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Masukkan nama, kelas, jurusan serta keterangan atau alasan mengapa izin keluar sekolah." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#FB923C" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="2" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#FFEDD5" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Periksa Kembali Data" android:textColor="#EA580C" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pastikan alasan yang ditulis jelas dan dapat dipertanggungjawabkan." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#FB923C" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="3" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1" android:background="#FFEDD5" android:layout_marginTop="4dp" android:layout_marginBottom="4dp"/>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingBottom="20dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tanda Tangan" android:textColor="#EA580C" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Ajukan dan minta tanda tangan petugas tata tertib (Tatib)." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <LinearLayout android:layout_width="28dp" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginEnd="12dp">
+                                    <com.google.android.material.card.MaterialCardView android:layout_width="28dp" android:layout_height="28dp" app:cardCornerRadius="14dp" app:cardBackgroundColor="#FB923C" app:cardElevation="0dp">
+                                        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="4" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:gravity="center"/>
+                                    </com.google.android.material.card.MaterialCardView>
+                                </LinearLayout>
+                                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Serahkan Surat" android:textColor="#EA580C" android:textStyle="bold" android:textSize="14sp" />
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Perlihatkan hasil surat kepada guru piket atau guru mapel yang bersangkutan untuk mendapatkan izin keluar." android:textColor="#6B7280" android:textSize="12sp" android:lineSpacingExtra="2dp"/>
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- BOTTOM NAVIGATION -->
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
@@ -381,7 +539,6 @@
         android:baselineAligned="false"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Nav Beranda -->
         <LinearLayout
             android:id="@+id/nav_beranda"
             android:layout_width="0dp"
@@ -393,7 +550,6 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:layout_marginTop="2dp" android:text="Beranda" android:textColor="#9E9E9E" android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Nav Riwayat -->
         <LinearLayout
             android:id="@+id/nav_riwayat"
             android:layout_width="0dp"
@@ -405,7 +561,6 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:layout_marginTop="2dp" android:text="Riwayat" android:textColor="#9E9E9E" android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Nav Panduan (AKTIF - Biru) -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -416,7 +571,6 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:layout_marginTop="2dp" android:text="Panduan" android:textColor="#3FA2F6" android:textSize="10sp" android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Nav Profil -->
         <LinearLayout
             android:id="@+id/nav_profil"
             android:layout_width="0dp"

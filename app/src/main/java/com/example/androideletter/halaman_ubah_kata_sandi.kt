@@ -40,7 +40,6 @@ class halaman_ubah_kata_sandi : AppCompatActivity() {
 
         // DEKLARASI ELEMEN POPUP
         val popupOverlay = findViewById<ConstraintLayout>(R.id.popup_overlay)
-        val btnTutupPopup = findViewById<ImageView>(R.id.btn_tutup_popup)
 
         // LOGIKA KEMBALI
         btnBackLayout.setOnClickListener {
@@ -89,16 +88,6 @@ class halaman_ubah_kata_sandi : AppCompatActivity() {
         }
 
         // LOGIKA TOMBOL SILANG (X) PADA POPUP
-        btnTutupPopup.setOnClickListener {
-            // Sembunyikan popup (opsional, karena akan pindah halaman)
-            popupOverlay.visibility = View.GONE
 
-            // Pindah ke Beranda Siswa
-            val intent = Intent(this, halaman_beranda_siswa::class.java)
-            // Hapus riwayat halaman agar tidak bisa kembali ke halaman ubah sandi ini
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
     }
 }

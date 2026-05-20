@@ -59,34 +59,8 @@ class halaman_edit_profil_siswa : AppCompatActivity() {
         }
 
         // 3. Toggle Jenis Kelamin (Tanpa ImageView)
-        val cardLaki = findViewById<MaterialCardView>(R.id.card_laki)
-        val tvLaki = findViewById<TextView>(R.id.tv_laki)
-        val cardPerempuan = findViewById<MaterialCardView>(R.id.card_perempuan)
-        val tvPerempuan = findViewById<TextView>(R.id.tv_perempuan)
 
-        cardLaki.setOnClickListener {
-            jenisKelaminDipilih = "male"
 
-            cardLaki.setCardBackgroundColor(Color.WHITE)
-            cardLaki.cardElevation = 4f
-            tvLaki.setTextColor(Color.parseColor("#3FA2F6"))
-
-            cardPerempuan.setCardBackgroundColor(Color.parseColor("#F5F5F5"))
-            cardPerempuan.cardElevation = 0f
-            tvPerempuan.setTextColor(Color.parseColor("#9E9E9E"))
-        }
-
-        cardPerempuan.setOnClickListener {
-            jenisKelaminDipilih = "female"
-
-            cardPerempuan.setCardBackgroundColor(Color.WHITE)
-            cardPerempuan.cardElevation = 4f
-            tvPerempuan.setTextColor(Color.parseColor("#3FA2F6"))
-
-            cardLaki.setCardBackgroundColor(Color.parseColor("#F5F5F5"))
-            cardLaki.cardElevation = 0f
-            tvLaki.setTextColor(Color.parseColor("#9E9E9E"))
-        }
 
         // ==========================================
         // TOMBOL LANJUT (SIMPAN PROFIL -> TTD)

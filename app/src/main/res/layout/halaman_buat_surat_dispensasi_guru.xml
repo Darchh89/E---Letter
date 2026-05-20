@@ -515,7 +515,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReset"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Reset"
@@ -525,21 +525,23 @@
                 app:backgroundTint="#ECEFF1"
                 app:cornerRadius="14dp"
                 app:elevation="0dp"
-                app:rippleColor="#CFD8DC" />
+                app:rippleColor="#CFD8DC"
+                app:strokeColor="#2196F3"
+                app:strokeWidth="1dp"/>
 
             <!-- Tombol Lanjut -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLanjut"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:text="Lanjut"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#1565C0"
-                app:cornerRadius="14dp"
+                app:backgroundTint="#2196F3"
+                app:cornerRadius="10dp"
                 app:elevation="4dp"
                 app:rippleColor="#1E88E5"
                 app:icon="@null" />

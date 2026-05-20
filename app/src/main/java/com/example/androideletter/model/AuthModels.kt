@@ -3,13 +3,6 @@
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-// Data yang dikirim ke server
-data class RegisterRequest(
-    val full_name: String,
-    val email: String,
-    val password: String,
-    val token: String? = null
-)
 
 // Data yang diterima dari server
 data class AuthResponse(
@@ -18,25 +11,8 @@ data class AuthResponse(
 )
 
 // Model untuk mengirim data Login
-data class LoginRequest(
-    val email: String,
-    val password: String
-)
-
-// Model untuk menerima respon Login dari server
-data class LoginResponse(
-    val message: String,
-    val token: String?,
-    val user: UserData?
-)
 
 // Data spesifik pengguna yang dikembalikan server
-data class UserData(
-    val id: Int,
-    val email: String,
-    val role: String,
-    val full_name: String
-)
 
 data class StudentProfileResponse(
     val full_name: String?,

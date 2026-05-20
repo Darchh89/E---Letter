@@ -7,7 +7,6 @@
     android:background="#FAFAFA"
     tools:context=".halaman_edit_profil_siswa">
 
-    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -50,7 +49,6 @@
             android:orientation="vertical"
             android:paddingHorizontal="24dp">
 
-            <!-- STEPPER PROGRESS (1 - 2 - 3) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <!-- Step 1: Profil (Aktif) -->
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
                     <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#3FA2F6" app:cardCornerRadius="16dp" app:cardElevation="0dp">
                         <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="1" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
@@ -69,7 +66,6 @@
 
                 <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#CFD8DC" />
 
-                <!-- Step 2: Tanda Tangan (Pasif) -->
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
                     <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#E0E0E0" app:cardCornerRadius="16dp" app:cardElevation="0dp">
                         <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="2" android:textColor="#9E9E9E" android:textSize="12sp" android:textStyle="bold" />
@@ -79,7 +75,6 @@
 
                 <View android:layout_width="40dp" android:layout_height="2dp" android:layout_marginBottom="16dp" android:background="#CFD8DC" />
 
-                <!-- Step 3: Selesai (Pasif) -->
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
                     <com.google.android.material.card.MaterialCardView android:layout_width="32dp" android:layout_height="32dp" app:cardBackgroundColor="#E0E0E0" app:cardCornerRadius="16dp" app:cardElevation="0dp">
                         <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="3" android:textColor="#9E9E9E" android:textSize="12sp" android:textStyle="bold" />
@@ -93,52 +88,39 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Lengkapi Profil Anda"
-                android:textColor="@android:color/black"
+                android:textColor="#374151"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- 1. INPUT NAMA -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Nama" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
                 <EditText android:id="@+id/et_nama" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:hint="Nama" android:paddingHorizontal="16dp" android:textColor="@android:color/black" android:textColorHint="#9E9E9E" android:textSize="14sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 2. INPUT NIS -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="NIS" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
                 <EditText android:id="@+id/et_nis" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:hint="NIS" android:inputType="number" android:paddingHorizontal="16dp" android:textColor="@android:color/black" android:textColorHint="#9E9E9E" android:textSize="14sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 3. DROPDOWN KONSENTRASI KEAHLIAN -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Kelas" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
-                <!-- Kita gunakan Spinner standar Android untuk dropdown -->
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
                 <Spinner android:id="@+id/spinner_keahlian" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:paddingHorizontal="12dp" />
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_gravity="center_vertical|end" android:layout_marginEnd="16dp" android:src="@android:drawable/arrow_down_float" app:tint="#757575"/>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 4. TOGGLE JENIS KELAMIN -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Jenis Kelamin" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="#F5F5F5" app:cardCornerRadius="8dp" app:cardElevation="0dp">
-                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:padding="4dp">
-
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/card_laki" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" app:cardBackgroundColor="@color/white" app:cardCornerRadius="6dp" app:cardElevation="2dp">
-                        <TextView android:id="@+id/tv_laki" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="Laki-laki" android:textColor="#3FA2F6" android:textSize="14sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView android:id="@+id/card_perempuan" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" app:cardBackgroundColor="#F5F5F5" app:cardCornerRadius="6dp" app:cardElevation="0dp">
-                        <TextView android:id="@+id/tv_perempuan" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:text="Perempuan" android:textColor="#9E9E9E" android:textSize="14sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- 5. INPUT EMAIL -->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Email" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
-            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
                 <EditText android:id="@+id/et_email" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@null" android:hint="Email" android:inputType="textEmailAddress" android:paddingHorizontal="16dp" android:textColor="@android:color/black" android:textColorHint="#9E9E9E" android:textSize="14sp" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- TOMBOL LANJUT -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6dp" android:text="Nomor Telepon" android:textColor="#424242" android:textSize="12sp" android:textStyle="bold" />
+            <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="32dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="8dp" app:cardElevation="0dp" app:strokeColor="#E0E0E0" app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:gravity="center_vertical" android:paddingHorizontal="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+62" android:textColor="@android:color/black" android:textStyle="bold" android:textSize="14sp"/>
+                    <EditText android:id="@+id/et_telepon" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginStart="8dp" android:background="@null" android:hint="81234567890" android:inputType="phone" android:textColor="@android:color/black" android:textColorHint="#9E9E9E" android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_lanjut"
                 android:layout_width="match_parent"

@@ -7,7 +7,6 @@
     android:background="#FAFAFA"
     tools:context=".halaman_beranda_guru">
 
-    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
         android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="24dp"
         android:paddingVertical="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -57,10 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="20dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="24dp">
 
-            <!-- BAGIAN 1: RINGKASAN IZIN -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +68,6 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <!-- Baris 1: Total Surat & Dispensasi -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +75,6 @@
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
-                <!-- Total Surat -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -109,7 +105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:text="34"
-                                android:textColor="#000000"
+                                android:textColor="#39A2DB"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
                             <com.google.android.material.card.MaterialCardView
@@ -134,7 +130,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Dispensasi -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -191,7 +186,6 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- Baris 2: Izin Masuk & Izin Keluar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -199,7 +193,6 @@
                 android:baselineAligned="false"
                 android:orientation="horizontal">
 
-                <!-- Izin Masuk -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -255,7 +248,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Izin Keluar -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -312,18 +304,18 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
-            <!-- BAGIAN 2: LIHAT SURAT BANNER BIRU -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#4AA8F8"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gradient_biru"
                     android:orientation="vertical"
                     android:padding="20dp">
 
@@ -359,7 +351,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- BAGIAN 3: PERSETUJUAN SURAT -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_persetujuan_surat"
                 android:layout_width="match_parent"
@@ -403,12 +394,10 @@
                     <ImageView
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@android:drawable/ic_media_next"
-                        app:tint="#3B82F6" />
+                        android:src="@drawable/icon_panah_kanan_biru" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- BAGIAN 4: BUAT PERMOHONAN BARU -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -472,7 +461,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- BAGIAN 5: RIWAYAT TERAKHIR -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -498,7 +486,6 @@
                     android:textSize="12sp" />
             </RelativeLayout>
 
-            <!-- Item Riwayat 1 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -509,18 +496,20 @@
                 app:strokeColor="#F0F0F0"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#F0F8FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#EFF6FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_dispensasi" app:tint="#3FA2F6" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Dispensasi" android:textColor="#1F2937" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 15 Okt 2023 • Lomba Robotik" android:textColor="#6B7280" android:textSize="11sp" />
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="2dp">
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:src="@drawable/tanggal_riwayat" app:tint="#9CA3AF" android:layout_marginEnd="4dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="15/10/2023 • SRT-2026-006" android:textColor="#6B7280" android:textSize="11sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/icon_panah_kanan_biru" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Item Riwayat 2 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -531,18 +520,20 @@
                 app:strokeColor="#F0F0F0"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#F0F8FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#EFF6FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_dispensasi" app:tint="#3FA2F6" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Dispensasi" android:textColor="#1F2937" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 15 Okt 2023 • Lomba Robotik" android:textColor="#6B7280" android:textSize="11sp" />
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="2dp">
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:src="@drawable/tanggal_riwayat" app:tint="#9CA3AF" android:layout_marginEnd="4dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="13/10/2023 • SRT-2026-005" android:textColor="#6B7280" android:textSize="11sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/icon_panah_kanan_biru" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Item Riwayat 3 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -553,32 +544,34 @@
                 app:strokeColor="#F0F0F0"
                 app:strokeWidth="1dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
-                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#F0F8FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="40dp" android:layout_height="40dp" app:cardBackgroundColor="#EFF6FF" app:cardCornerRadius="12dp" app:cardElevation="0dp">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:src="@drawable/icon_surat_dispensasi" app:tint="#3FA2F6" />
                     </com.google.android.material.card.MaterialCardView>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Izin Dispensasi" android:textColor="#1F2937" android:textSize="14sp" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="🖹 15 Okt 2023 • Lomba Robotik" android:textColor="#6B7280" android:textSize="11sp" />
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="2dp">
+                            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:src="@drawable/tanggal_riwayat" app:tint="#9CA3AF" android:layout_marginEnd="4dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11/10/2023 • SRT-2026-004" android:textColor="#6B7280" android:textSize="11sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_media_next" app:tint="#3FA2F6" />
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/icon_panah_kanan_biru" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- BOTTOM NAVIGATION -->
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="70dp"
         android:background="@color/white"
         android:elevation="16dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:baselineAligned="false"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Beranda (Active - Biru) -->
         <LinearLayout
             android:id="@+id/nav_beranda"
             android:layout_width="0dp"
@@ -586,10 +579,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-            <!-- Asumsi Anda menggunakan ikon khusus yang sama dengan sebelumnya -->
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/icon_beranda_new"
                 app:tint="#3FA2F6" />
             <TextView
@@ -602,7 +594,6 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Riwayat -->
         <LinearLayout
             android:id="@+id/nav_riwayat"
             android:layout_width="0dp"
@@ -610,11 +601,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-            <!-- Icon riwayat kembali ke abu-abu -->
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/icon_riwayat_biru_new"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_riwayat_new"
                 app:tint="#9CA3AF" />
             <TextView
                 android:layout_width="wrap_content"
@@ -625,7 +615,6 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Panduan -->
         <LinearLayout
             android:id="@+id/nav_panduan"
             android:layout_width="0dp"
@@ -634,8 +623,8 @@
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/icon_panduan_new"
                 app:tint="#9CA3AF" />
             <TextView
@@ -647,7 +636,6 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Profil -->
         <LinearLayout
             android:id="@+id/nav_profil"
             android:layout_width="0dp"
@@ -656,8 +644,8 @@
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/icon_profil_new"
                 app:tint="#9CA3AF" />
             <TextView

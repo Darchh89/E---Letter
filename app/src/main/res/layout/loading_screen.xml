@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:fontFamily="sans-serif-medium"
-        android:text="SMK Negeri 2 Singosari"
+        android:text="RPL SMKN 02 Singosari"
         android:textColor="#3F51B5"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

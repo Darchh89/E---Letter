@@ -1,30 +1,28 @@
 package com.example.androideletter.network
 
-import com.example.androideletter.api.EletterApiService // Sesuaikan dengan lokasi interface API Anda
 import okhttp3.OkHttpClient
+import com.example.androideletter.api.EletterApiService
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-
-    private const val BASE_URL ="http://192.168.1.81:3000/"
-
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
-
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
+    private const val BASE_URL = "http://192.168.1.5:8080/api/v1/"
 
     val instance: EletterApiService by lazy {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL )
-            .client(client) // Memasang interceptor ke Retrofit untuk melihat log data[cite: 1]
-            .addConverterFactory(GsonConverterFactory.create()) // Memasang Gson untuk konversi JSON[cite: 1]
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logging)
             .build()
 
-        retrofit.create(EletterApiService::class.java)
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(EletterApiService::class.java)
     }
 }

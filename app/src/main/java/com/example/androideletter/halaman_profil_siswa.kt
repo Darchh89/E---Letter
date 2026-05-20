@@ -35,7 +35,6 @@ class halaman_profil_siswa : AppCompatActivity() {
         val tvNama = findViewById<TextView>(R.id.tv_nama_profil)
         val tvNisn = findViewById<TextView>(R.id.tv_nisn_profil)
         val tvKelas = findViewById<TextView>(R.id.tv_kelas_value)
-        val tvGender = findViewById<TextView>(R.id.tv_gender_value)
         val tvEmail = findViewById<TextView>(R.id.tv_email_value)
 
         // View tambahan untuk statistik surat
@@ -43,7 +42,6 @@ class halaman_profil_siswa : AppCompatActivity() {
         val tvTotalKeluar = findViewById<TextView>(R.id.tv_total_izin_keluar)
 
         // Panggil fungsi untuk mengambil data dari server (tambahkan parameter ivFotoProfil)
-        muatDataProfilSiswa(ivFotoProfil, tvNama, tvNisn, tvKelas, tvGender, tvEmail, tvTotalMasuk, tvTotalKeluar)
 
         // ==========================================
         // DEKLARASI MENU AKUN

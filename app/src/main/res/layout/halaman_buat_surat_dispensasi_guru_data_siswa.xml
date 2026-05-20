@@ -8,14 +8,14 @@
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="65dp"
         android:background="@drawable/bg_gradient_biru"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/icon_panah_kembali"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:src="@drawable/icon_panah_kembali"
@@ -260,6 +260,7 @@
             android:textAllCaps="false"
             android:textColor="#2196F3"
             android:backgroundTint="@android:color/white"
+            app:strokeColor="#2196F3"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         <Button
@@ -269,7 +270,8 @@
             android:layout_marginStart="10dp"
             android:text="Lanjut"
             android:textAllCaps="false"
-            android:backgroundTint="#4FC3F7"/>
+            android:backgroundTint="#4FC3F7"
+            app:cornerRadius="8dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

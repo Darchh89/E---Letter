@@ -26,7 +26,7 @@ class halaman_verifikasi_otp : AppCompatActivity() {
         windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
         val btnBackLayout = findViewById<LinearLayout>(R.id.btn_back_layout)
-        val btnKonfirmasi = findViewById<MaterialButton>(R.id.btn_konfirmasi)
+        val btnKonfirmasi = findViewById<MaterialButton>(R.id.btn_verifikasi)
         val tvKirimUlang = findViewById<TextView>(R.id.tv_kirim_ulang)
 
         val otp1 = findViewById<EditText>(R.id.otp_1)

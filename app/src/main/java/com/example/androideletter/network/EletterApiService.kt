@@ -6,29 +6,26 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface EletterApiService {
-        // Ubah dari registerStudent menjadi registerUser agar universal
-        // SATU FUNGSI UNTUK SEMUA REGISTRASI (GURU & SISWA)
-    @POST("api/auth/register")
-    fun registerUser(
-    @Body request: RegisterRequest): Call<GeneralResponse> // Konsisten menggunakan GeneralResponse
 
-    @POST("api/auth/login")
+    // --- AUTHENTICATION ---
+    @POST("auth/login")
     fun loginUser(@Body request: LoginRequest): Call<LoginResponse>
 
-    // 1. Ambil Profil Siswa
+    @POST("register") // Pastikan endpoint ini sesuai dengan API backend Anda (misal "auth/register")
+    fun registerUser(@Body request: RegisterRequest): Call<RegisterResponse>
+
+    // --- PROFILE ---
     @GET("api/student/profile")
     fun getStudentProfile(
         @Header("Authorization") token: String
     ): Call<StudentProfileResponse>
 
-    // 2. Update Profil Siswa (Teks)
     @PUT("api/student/profile")
     fun updateStudentProfile(
         @Header("Authorization") token: String,
         @Body request: UpdateProfileRequest
     ): Call<GeneralResponse>
 
-    // 3. Upload Tanda Tangan (File Gambar)
     @Multipart
     @POST("api/student/signature")
     fun uploadSignature(
@@ -36,17 +33,11 @@ interface EletterApiService {
         @Part signature: MultipartBody.Part
     ): Call<SignatureResponse>
 
-    @GET("api/classes") // <-- Berubah menjadi api/classes
+    // --- DATA & SURAT ---
+    @GET("api/classes")
     fun getClasses(
         @Header("Authorization") token: String
     ): Call<List<DepartmentResponse>>
-
-    // Endpoint Buat Surat Izin Masuk
-    @POST("api/student/surat-izin-masuk")
-    fun buatSuratIzinMasuk(
-        @Header("Authorization") token: String,
-        @Body request: SuratIzinMasukRequest
-    ): Call<GeneralResponse> // Menggunakan GeneralResponse yang sudah ada
 
     @GET("api/student/history")
     fun getHistorySurat(
@@ -59,17 +50,22 @@ interface EletterApiService {
         @Query("q") query: String
     ): Call<List<SearchStudentResponse>>
 
+    @POST("api/student/surat-izin-masuk")
+    fun buatSuratIzinMasuk(
+        @Header("Authorization") token: String,
+        @Body request: SuratIzinMasukRequest
+    ): Call<GeneralResponse>
+
     @POST("api/student/surat-izin-keluar")
     fun buatSuratIzinKeluarMulti(
         @Header("Authorization") token: String,
         @Body request: CreateIzinKeluarRequest
     ): Call<GeneralResponse>
 
-
     @POST("api/student/surat-izin-masuk")
     fun buatSuratIzinMasukMulti(
         @Header("Authorization") token: String,
-        @Body request: CreateIzinKeluarRequest // Reusable model request
+        @Body request: CreateIzinKeluarRequest
     ): Call<GeneralResponse>
 
     @GET("api/student/request/{id}")
