@@ -15,6 +15,12 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".halaman_daftar_surat_izin_keluar_admin"
+            android:exported="false" />
+        <activity
+            android:name=".halaman_lihat_surat_admin"
+            android:exported="false" />
+        <activity
             android:name=".halaman_riwayat_persetujuan_kepala_sekolah"
             android:exported="false" />
         <activity
@@ -211,6 +217,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

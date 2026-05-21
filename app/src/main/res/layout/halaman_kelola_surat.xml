@@ -1,241 +1,511 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F5F6FA"
     tools:context=".halaman_kelola_surat">
 
+    <!-- TOP APP BAR -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/imgLogoSmk"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Logo SMK"
+            android:src="@drawable/logo_smk" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="Si Izin"
+            android:textColor="#1A73E8"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgLogoNotifikasi"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Notifikasi"
+            android:src="@drawable/logo_notifikasi" />
+    </LinearLayout>
+
+    <!-- SCROLLABLE CONTENT -->
+
+    <!-- BOTTOM NAVIGATION BAR -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="40dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="32dp">
+            android:paddingBottom="16dp">
 
-            <LinearLayout
-                android:id="@+id/btn_keluar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/icon_keluar" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Keluar"
-                    android:textColor="#C62828"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <HorizontalScrollView
+            <!-- STATS CARD (Blue) -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:scrollbars="none">
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#39A2DB"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="4dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/tab_dasbor"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="135dp"
+                        android:background="@drawable">
+
+                        <!-- Bulatan putih -->
+                        <View
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="-45dp"
+                            android:layout_marginBottom="-35dp"
+                            android:alpha="0.15"
+                            android:background="@drawable/bg_circle_biru_muda" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvLabelBulanIni"
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="6dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="#9E9E9E"
-                        app:strokeWidth="1dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Dasbor" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:text="Total Pengajuan Bulan Ini"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="12sp" />
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/tab_kelola"
+                    <TextView
+                        android:id="@+id/tvTotalIzin"
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="#81D47A"
-                        app:cardCornerRadius="6dp"
-                        app:cardElevation="0dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Kelola Surat" android:textColor="@color/white" android:textSize="12sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvLabelBulanIni"
+                        android:text="34 Izin"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/tab_unduh"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="6dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="#9E9E9E"
-                        app:strokeWidth="1dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Unduh Surat" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvTotalIzin"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/tab_pengguna"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="6dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="#9E9E9E"
-                        app:strokeWidth="1dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="match_parent" android:gravity="center" android:paddingHorizontal="16dp" android:text="Pengguna" android:textColor="@android:color/black" android:textSize="12sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-            </HorizontalScrollView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_chip_white"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp">
 
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_check_circle"
+                                app:tint="#1A73E8" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="30 Disetujui"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_chip_white"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_close_circle"
+                                app:tint="#E84040" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="4 Ditolak"
+                                android:textColor="#FFFFFF"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- SECTION TITLE -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelola Surat"
-                android:textColor="@android:color/black"
-                android:textSize="22sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Lihat Surat Izin Anda"
+                android:textColor="#1A1A2E"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"
-                android:text="Kelola semua surat pengajuan"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
+                android:text="Kelola dan pantau semua pengajuan surat Anda."
+                android:textColor="#555555"
+                android:textSize="12sp" />
 
-            <com.google.android.material.card.MaterialCardView
+            <!-- MENU ITEMS -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:strokeColor="#E0E0E0"
-                app:strokeWidth="1dp">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <!-- Card: Dispensasi -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDispensasi"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="16dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="3dp">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@android:drawable/ic_menu_search"
-                        app:tint="#BDBDBD" />
-
-                    <EditText
-                        android:id="@+id/et_cari"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="12dp"
-                        android:background="@null"
-                        android:hint="Cari surat..."
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:textColor="@android:color/black"
-                        android:textColorHint="#9E9E9E"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                    <TextView android:id="@+id/title_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#FFF59D" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_1" app:layout_constraintStart_toEndOf="@+id/title_1" app:layout_constraintTop_toTopOf="@+id/title_1">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Menunggu" android:textColor="#F57F17" android:textSize="10sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-                    <TextView android:id="@+id/pengirim_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="Paskibra" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_1" />
-                    <TextView android:id="@+id/tgl_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_1" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_1" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_icon_blue_light">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                    <TextView android:id="@+id/title_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Keluar" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_2" app:layout_constraintStart_toEndOf="@+id/title_2" app:layout_constraintTop_toTopOf="@+id/title_2">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-                    <TextView android:id="@+id/pengirim_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="Siti" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_2" />
-                    <TextView android:id="@+id/tgl_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_2" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_2" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Surat Dispensasi"
+                                android:src="@drawable/icon_surat_dispensasi" />
+                        </FrameLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                    <TextView android:id="@+id/title_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Surat Masuk" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#B9F6CA" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_3" app:layout_constraintStart_toEndOf="@+id/title_3" app:layout_constraintTop_toTopOf="@+id/title_3">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Disetujui" android:textColor="#00C853" android:textSize="10sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-                    <TextView android:id="@+id/pengirim_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="Rizky" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_3" />
-                    <TextView android:id="@+id/tgl_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_3" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_3" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
-                <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-                    <TextView android:id="@+id/title_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dispensasi" android:textColor="@android:color/black" android:textSize="16sp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                    <com.google.android.material.card.MaterialCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" app:cardBackgroundColor="#FFCDD2" app:cardCornerRadius="12dp" app:cardElevation="0dp" app:layout_constraintBottom_toBottomOf="@+id/title_4" app:layout_constraintStart_toEndOf="@+id/title_4" app:layout_constraintTop_toTopOf="@+id/title_4">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="Ditolak" android:textColor="#C62828" android:textSize="10sp" android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-                    <TextView android:id="@+id/pengirim_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:drawablePadding="8dp" android:text="LKS" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/user_abu_putih" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/title_4" />
-                    <TextView android:id="@+id/tgl_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:drawablePadding="8dp" android:text="Diajukan: 20 November 2025 pukul 10.30" android:textColor="#616161" android:textSize="12sp" app:drawableStartCompat="@drawable/icon_tanggal_biru" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/pengirim_4" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="No. Surat: SRT-1763363016509" android:textColor="#424242" android:textSize="10sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tgl_4" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dispensasi"
+                                android:textColor="#1A1A2E"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Lihat pengajuan surat dispensasi yang telah diajukan."
+                                android:textColor="#555555"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="Buka"
+                            android:src="@drawable/icon_panah_kanan_abu" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card: Surat Izin Masuk -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardIzinMasuk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_icon_purple_light">
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Surat Izin Masuk"
+                                android:src="@drawable/icon_surat_izin_masuk" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Surat Izin Masuk"
+                                android:textColor="#1A1A2E"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Lihat pengajuan surat izin masuk yang telah dibuat."
+                                android:textColor="#555555"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="Buka"
+                            android:src="@drawable/icon_panah_kanan_abu" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card: Surat Izin Keluar -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardIzinKeluar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_icon_orange_light">
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Surat Izin Keluar"
+                                android:src="@drawable/icon_surat_izin_keluar" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Surat Izin Keluar"
+                                android:textColor="#1A1A2E"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Lihat pengajuan surat izin keluar yang telah dibuat."
+                                android:textColor="#555555"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="Buka"
+                            android:src="@drawable/icon_panah_kanan_abu" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <!-- Tab: Beranda -->
+        <LinearLayout
+            android:id="@+id/tabBeranda"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="Beranda"
+                android:src="@drawable/icon_beranda_new" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Beranda"
+                android:textColor="#555555"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Tab: Akun -->
+        <LinearLayout
+            android:id="@+id/tabAkun"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="Akun"
+                android:src="@drawable/icon_orang_abu_abu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Akun"
+                android:color="#F1F3F6"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Tab: Surat (AKTIF) -->
+        <LinearLayout
+            android:id="@+id/tabSurat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:contentDescription="Surat"
+                android:src="@drawable/icon_surat_abu_abu" />
+
+        </LinearLayout>
+
+        <!-- Tab: Setelan -->
+        <LinearLayout
+            android:id="@+id/tabSetelan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:contentDescription="Setelan"
+                android:src="@drawable/icon_setting" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
