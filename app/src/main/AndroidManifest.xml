@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AndroidELetter"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".halaman_edit_profil_admin"
+            android:exported="false" />
+        <activity
             android:name=".halaman_daftar_surat_izin_keluar_admin"
             android:exported="false" />
         <activity
